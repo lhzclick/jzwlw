@@ -1,0 +1,61 @@
+body,
+ul,
+ol,
+dl,
+dd,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input {
+  margin: 0;
+  font-family: "微软雅黑";
+  font-weight: normal;
+  color: #525252;
+}
+
+ul,
+ol,
+th,
+p,
+td,
+input,
+option,
+textarea {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+textarea,
+select,button {
+  outline: none;
+}
+
+textarea {
+  /*resize: none;*/
+}
+.clear:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.clear{
+  zoom: 1;
+}
+a{
+  text-decoration: none;
+}
