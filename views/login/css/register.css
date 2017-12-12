@@ -109,3 +109,7 @@ body{
     color:#db3b3e;
     margin-left: 60px;
 }
+a:hover {
+    color:#5ca3e6;
+    text-decoration:none;
+}

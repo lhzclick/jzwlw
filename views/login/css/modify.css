@@ -169,3 +169,7 @@ body{
     color: #5ca3e6;
     display: none;
 }
+a:hover {
+    color:#5ca3e6;
+    text-decoration:none;
+}

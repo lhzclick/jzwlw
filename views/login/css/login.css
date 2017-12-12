@@ -302,3 +302,7 @@
     height:46px;
     background:url(/views/login/img/eye-h.png) no-repeat center center;
 }
+.listLi4 a:hover {
+    color:#5ca3e6;
+    text-decoration:none;
+}
