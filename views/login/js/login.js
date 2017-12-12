@@ -10,3 +10,21 @@ $('.eye').mouseout(function(){
     $(this).css('background-image','url(/views/login/img/eye-h.png)')
     $(this).prev().attr('type','password')
 })
+$('.loginWz').on('click',function (){
+    $.ajax({
+        url:'/info',
+        type:'post',
+        data:{
+            loginName:$('.loginName').val(),
+            loginName:$('.loginName').val(),
+            password:$('.password').val()
+        },
+        success:function(data){
+          if(data){
+              window.location.href = '/';
+          }else{
+              alert('用户不存在或密码错误')
+          }
+        }
+    })
+})

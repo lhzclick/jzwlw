@@ -10,6 +10,7 @@ var users = require('./routes/users');
 
 var app = express();
 let mysql =require('mysql');
+let session =require('express-session');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -41,11 +42,16 @@ connection.connect(function(err){
     }
 })
 
-
+//配置session
+app.use(session({
+    secret: 'this is the secret for cookie',
+    resave: false,
+    saveUninitialized: true
+}));
 //connection.end();
-//查询
+//查询 登陆验证 写入session
 app.post('/info', function (req, res) {
-    //执行查询
+    let bodyInfo = req.body;
     let userGetSql = 'SELECT * FROM userInfo';
     connection.query(userGetSql,function(err,result){
         if(err){
@@ -56,7 +62,53 @@ app.post('/info', function (req, res) {
             res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
             res.header("X-Powered-By",' 3.2.1')
             res.header("Content-Type", "application/json;charset=utf-8");
-            res.send(result);
+            //res.send(result);
+            let sucOn = -1;
+            result.forEach(function(e,i){
+                if(bodyInfo.loginName==e.loginName&&bodyInfo.password==e.password){
+                    sucOn=i;
+                }else if(bodyInfo.loginName==e.tel&&bodyInfo.password==e.password){
+                    sucOn=i;
+                }
+            });
+            if(sucOn!=-1){
+                req.session.loginName = result[sucOn].loginName;
+                req.session.password = result[sucOn].password;
+                req.session.nickName = result[sucOn].nickName;
+                req.session.tel = result[sucOn].tel;
+                res.send(true);
+            }else{
+                res.send(false);
+            }
+
+        }
+    });
+});
+//查询 读取session
+app.post('/userEx', function (req, res) {
+    let userGetSql = 'SELECT * FROM userInfo';
+    connection.query(userGetSql,function(err,result){
+        if(err){
+            console.log('查询错误')
+        }else{
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+            res.header("X-Powered-By",' 3.2.1')
+            res.header("Content-Type", "application/json;charset=utf-8");
+            let sucOn = -1;
+            result.forEach(function(e,i){
+                if(req.session.loginName==e.loginName&&req.session.password==e.password){
+                    sucOn=i;
+                }else if(req.session.loginName==e.tel&&req.session.password==e.password){
+                    sucOn=i;
+                }
+            });
+            if(sucOn!=-1){
+                res.send(req.session);
+            }else{
+                res.send(false);
+            }
         }
     });
 });
