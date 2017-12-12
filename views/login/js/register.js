@@ -23,23 +23,30 @@ $('.tyxy').on('click',function(){
     })
 })
 $('.tamWz').on('click',function (){
+    let telNum =   $('.phoneLi').val();
     $.ajax({
-        url:'http://sapi.253.com/msg/HttpBatchSendSM',
+        url:'/message',
         type:'post',
-        dataType: 'json',
-        data:{
-            //account=vip-lsy1&pswd=Tch5832075&mobile=18627798893&msg=您的注册验证码是:aaa&needstatus=true
-            account:'vip-lsy1',
-            pswd:'Tch5832075',
-            phone:'15727042308',
-            msg:'您的注册验证码是:8767'
-            //needstatus:true
-        },
-        success:function (data){
-            console.log(data)
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-            console.log(xhr, ajaxOptions, thrownError)
+        success:function(data){
+            let url = `http://sapi.253.com/msg/HttpBatchSendSM?account=vip-lsy1&pswd=Tch5832075&mobile=${telNum}&msg=您的注册验证码是:${data.message}&needstatus=true`;
+            $.ajax({
+                url:url,
+                type:'post',
+                dataType: 'jsonp',
+                data:{
+                    //account=vip-lsy1&pswd=Tch5832075&mobile=18627798893&msg=您的注册验证码是:aaa&needstatus=true
+                    //account:'vip-lsy1',
+                    //pswd:'Tch5832075',
+                    //phone:'15727042308',
+                    //msg:'您的注册验证码是:1111'
+                    //needstatus:true
+                },
+                success:function (data){
+                    console.log(data)
+                }
+            })
         }
     })
+
+
 })
