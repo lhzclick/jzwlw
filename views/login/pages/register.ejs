@@ -2,12 +2,27 @@
 <html>
 <head>
     <title>注册</title>
-    <!-- public文件-->
     <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/views/login/css/register.css"/>
 </head>
 <body>
-<!-- public文件-->
-<script src="/js/jquery-1.9.1.min.js"></script>
-<script src="js/index.js"></script>
+    <div class="registerWrap">
+        <h2 class="title">基站物联网大数据开发平台</h2>
+        <div class="zcxxWrap">
+            <p class="zcxxTop"><span class="usrexx">用户注册信息</span><span class="return"><a href="#">已有账号？立即登录</a></span></p>
+            <ul class="zcxxtab">
+                <li><span class="usreName">用户名</span><input type="text" placeholder="请输入用户名"/></li>
+                <li><span class="usreName">昵称</span><input type="text" placeholder="请输入昵称"/></li>
+                <li><span class="usreName">登录密码</span><input type="password" placeholder="请输入登录密码"/></li>
+                <li><span class="usreName">确认密码</span><input type="text" placeholder="请再次输入你的登录密码"/></li>
+                <li><span class="usreName">手机号</span><input  class="phoneLi" type="text" placeholder="请输入手机号"/><span class="position">+86</span></li>
+                <li><input class="yzmIpt" type="text" placeholder="请输入验证码"/><span class="tamWz">获取验证码</span></li>
+                <li><p class="tyxy">同意协议并提交</p></li>
+                <li class="lastLi"><input class="checked" type="checkbox"/>我已同意注册基站物联网大数据平台账号并且同意所有条款<span class="hide">请勾选同意条款</span></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/views/login/js/register.js"></script>
 </body>
 </html>
