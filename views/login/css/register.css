@@ -1,0 +1,111 @@
+body{
+    background: #f0f4f7;
+}
+.registerWrap{
+    width:1000px;
+    height: auto;
+    margin: auto;
+}
+.title{
+    line-height: 144px;
+    background: url(/views/login/img/zcxx.png) no-repeat 225px center;
+    text-indent: 306px;
+    font-size:36px;
+}
+.zcxxWrap{
+    padding: 0 30px;
+    background: #fff;
+}
+.zcxxTop{
+    height:64px;
+    border-bottom:1px solid #e9edf0;
+    color:#525252;
+}
+.usrexx{
+    line-height: 64px;
+    font-size:20px;
+}
+.return{
+    float:right;
+    color:#525252;
+    font-size:16px;
+    padding-top:35px;
+}
+.return a{
+    color:#525252;
+
+}
+.zcxxtab{
+    padding-top:30px;
+}
+.zcxxtab li{
+    height:68px;
+    position: relative;
+}
+.zcxxtab li input{
+    width: 478px;
+    height:46px;
+    border:1px solid #e9edf0;
+    text-indent:30px;
+    font-size:16px;
+}
+.usreName{
+    display: inline-block;
+    width:210px;
+    padding-right:20px;
+    text-align: right;
+    line-height:48px;
+}
+.zcxxtab li .yzmIpt{
+    width: 228px;
+    margin-left: 230px;
+    margin-right: 20px;
+}
+.tamWz{
+    display: inline-block;
+    width:228px;
+    line-height: 46px;
+    border:1px solid #e9edf0;
+    background: #f0f4f7;
+    text-align: center;
+    color:#7a7a7a;
+}
+.tyxy{
+    width: 480px;
+    line-height: 48px;
+    background: #5ca3e6;
+    text-align: center;
+    margin: auto;
+    color:#fff;
+}
+.tyxy:hover{
+    background: #3d8fdb;
+}
+.zcxxtab li .checked{
+    width:15px;
+    height:15px;
+    margin-right: 10px;
+    position: relative;
+    top:3px;
+}
+.zcxxtab .lastLi{
+    text-indent: 230px;
+    color:#5ca3e6;
+    font-size:12px;
+}
+.zcxxtab li .phoneLi{
+    text-indent: 80px;
+}
+.position{
+    position: absolute;
+    top: 0;
+    left:230px;
+    width:62px ;
+    line-height:46px;
+    text-align: center;
+    border-right:1px solid #e9edf0;
+}
+.hide{
+    color:#db3b3e;
+    margin-left: 60px;
+}
