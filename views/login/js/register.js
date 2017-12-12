@@ -11,4 +11,21 @@ $('.checked').on('click',function(){
         $('.hide').show()
         on = true
     }
+});
+$('.tamWz').on('click',function (){
+    $.ajax({
+        url:'http://sapi.253.com/msg/HttpBatchSendSM',
+        type:'post',
+        data:{
+            //account=vip-lsy1&pswd=Tch5832075&mobile=18627798893&msg=您的注册验证码是:aaa&needstatus=true
+            account:'vip-lsy1',
+            pswd:'Tch5832075',
+            mobile:'15727042308',
+            msg:'您的注册验证码是:aaa',
+            needstatus:true
+        }
+        success:function (data){
+            console.log(data)
+        }
+    })
 })
