@@ -251,7 +251,7 @@
     background-color:#fff;
     box-shadow: 0 1em 2em -1em rgba(0, 0, 0, 0.5);
     line-height: 1.5;
-    width:480px;
+    width:420px;
     border-radius:5px;
     padding: 60px 40px 0 40px;
 }
@@ -286,7 +286,7 @@
     background: #3d8fdb;
 }
 .loginTab .listLi4{
-    height:142px;
+    height:120px;
     text-align: left;
 }
 .loginTab .listLi4 a{
