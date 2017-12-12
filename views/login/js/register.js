@@ -12,6 +12,16 @@ $('.checked').on('click',function(){
         on = true
     }
 });
+$('.tyxy').on('click',function(){
+    layui.use('layer',function(){
+        var mobile = $('.phoneLi').val()
+        if(!mobile){
+            layer.alert("手机号不能为空");
+        }else if(!(/^1[3|5][0-9]\d{4,8}$/.test(mobile))){
+            layer.alert("请输入正确的手机号");
+        }
+    })
+})
 $('.tamWz').on('click',function (){
     $.ajax({
         url:'http://sapi.253.com/msg/HttpBatchSendSM',
