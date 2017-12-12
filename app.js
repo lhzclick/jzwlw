@@ -11,6 +11,8 @@ var users = require('./routes/users');
 var app = express();
 let mysql =require('mysql');
 let session =require('express-session');
+let  http = require('http');
+let  qs = require('querystring');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -113,20 +115,29 @@ app.post('/userEx', function (req, res) {
     });
 });
 
+//生成发送短信码
+app.post('/message', function (req, res) {
+    let Num="";
+    for(let i = 0;i < 6;i ++ ){
+        Num+=Math.floor(Math.random()*10);
+    };
+    res.send({message:Num})
+});
+
 
 //注册 添加用户
-app.post('/add',function (req,res){
-    let querys = req.query;
-    let [loginName,password,tel,nickName] = [querys.loginName,querys.password,querys.tel,querys.nickName];
-    console.log(querys)
-    connection.query("insert into info(loginName,password,tel,nickName) values('"+loginName+"','"+ password +"','"+tel+"','"+ nickName +"')",function(err,rows){
-        if(err){
-            res.send("新增失败"+err);
-        }else {
-            res.send("新增成功");
-        }
-    });
-});
+//app.post('/add',function (req,res){
+//    let querys = req.query;
+//    let [loginName,password,tel,nickName] = [querys.loginName,querys.password,querys.tel,querys.nickName];
+//    console.log(querys)
+//    connection.query("insert into info(loginName,password,tel,nickName) values('"+loginName+"','"+ password +"','"+tel+"','"+ nickName +"')",function(err,rows){
+//        if(err){
+//            res.send("新增失败"+err);
+//        }else {
+//            res.send("新增成功");
+//        }
+//    });
+//});
 
 //
 
