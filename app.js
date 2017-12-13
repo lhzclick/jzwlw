@@ -13,6 +13,10 @@ let mysql =require('mysql');
 let session =require('express-session');
 let  http = require('http');
 let  qs = require('querystring');
+
+
+let router = express.Router();
+let request = require('request');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -115,31 +119,89 @@ app.post('/userEx', function (req, res) {
     });
 });
 
+
+
+
+//注册 添加用户
+app.post('/add',function (req,res){
+    let bodyInfo = req.body;
+    let [loginName,password,tel,nickName] = [bodyInfo.loginName,bodyInfo.password,bodyInfo.tel,bodyInfo.nickName];
+    let userGetSql = 'SELECT * FROM userInfo';
+    connection.query(userGetSql,function(err,result){
+        if(err){
+            console.log('查询错误')
+        }else {
+            let isLogin = false;
+            result.forEach(function (e,i){
+                if(e.loginName==loginName){
+                    isLogin = true;
+                }
+            });
+            if(!isLogin){
+                connection.query("insert into userInfo(loginName,password,tel,nickName) values('"+loginName+"','"+ password +"','"+tel+"','"+ nickName +"')",function(err,rows){
+                    if(err){
+                        res.send("新增失败"+err);
+                    }else {
+                        console.log('新增成功');
+                        res.send("新增成功");
+                    }
+                });
+            }else{
+                res.send("用户名已存在");
+            }
+        }
+    });
+});
+
+
 //生成发送短信码
-app.post('/message', function (req, res) {
+//app.post('/message', function (req, res) {
+
+//});
+//请求http短信接口
+app.post('/message', function(req, res){
     let Num="";
     for(let i = 0;i < 6;i ++ ){
         Num+=Math.floor(Math.random()*10);
     };
-    res.send({message:Num})
-});
+    let bodyInfo = req.body;
+    var method = req.method.toUpperCase();
+    var proxy_url = `http://sapi.253.com/msg/HttpBatchSendSM?account=vip-lsy1&pswd=Tch5832075&mobile=${bodyInfo.telNum}&msg=您的注册验证码是:${Num}&needstatus=true`;
+    var options = {
+        headers: {"Connection": "close"},
+        url: proxy_url,
+        method: method,
+        json: true,
+        body: req.body
+    };
+    function callback(error, response, data) {
+        if (!error && response.statusCode == 200) {
+            console.log('------接口数据------',data);
+            res.send({
+                status:data,
+                shortM:Num
+            })
+        }
+    }
+    request(options, callback);
+})
 
 
-//注册 添加用户
-//app.post('/add',function (req,res){
-//    let querys = req.query;
-//    let [loginName,password,tel,nickName] = [querys.loginName,querys.password,querys.tel,querys.nickName];
-//    console.log(querys)
-//    connection.query("insert into info(loginName,password,tel,nickName) values('"+loginName+"','"+ password +"','"+tel+"','"+ nickName +"')",function(err,rows){
-//        if(err){
-//            res.send("新增失败"+err);
-//        }else {
-//            res.send("新增成功");
-//        }
-//    });
-//});
 
-//
+//修改密码
+app.post('/update',function (req,res){
+    let querys = req.body;
+    let [tel,password] =  [querys.tel,querys.password];
+    var update = `update userInfo set age ="${password}"  where user ="${tel}"`;
+    //var sql = "update user set age = '"+ age +"',sex = '"+ sex +"',password = '"+ password +"' where user = " + user;
+    connection.query(update,function(err,rows){
+        if(err){
+            res.send("修改失败 " + err);
+        }else {
+            res.send("修改成功");
+        }
+    });
+})
 
 
 
