@@ -70,6 +70,14 @@ body{
     text-align: center;
     color:#7a7a7a;
 }
+#btn{
+    width:228px;
+    line-height: 46px;
+    border:1px solid #e9edf0;
+    background: #f0f4f7;
+    text-align: center;
+    color:#7a7a7a;
+}
 .tyxy{
     width: 480px;
     line-height: 48px;
