@@ -168,7 +168,10 @@ app.post('/message', function(req, res){
     var method = req.method.toUpperCase();
     var proxy_url = `http://sapi.253.com/msg/HttpBatchSendSM?account=vip-lsy1&pswd=Tch5832075&mobile=${bodyInfo.telNum}&msg=您的注册验证码是:${Num}&needstatus=true`;
     var options = {
-        headers: {"Connection": "close"},
+        headers: {
+            "Connection": "close",
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
         url: proxy_url,
         method: method,
         json: true,
