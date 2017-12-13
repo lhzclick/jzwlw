@@ -12,46 +12,67 @@ $('.checked').on('click',function(){
         on = true
     }
 });
-//手机号正则验证
-$('.phoneLi').on('blur',function(){
-    layui.use('layer',function(){
-        var mobile = $('.phoneLi').val()
-        if(!mobile){
-            layer.alert("手机号不能为空");
-        }else if(!(/^1[0-9]{10}$/.test(mobile))){
-            layer.alert("请输入正确的手机号");
-        }
-    })
-})
+
 //用户名正则验证
 $('.useInp').on('blur',function(){
-    layui.use('layer',function(){
         var mobile = $('.useInp').val()
         if(!mobile){
-            layer.alert("用户名不能为空");
-        }else if(!(/^[a-zA-Z0-9_-]{4,16}$/.test(mobile))){
-            layer.alert("请输入规范的用户名");
+            //layer.alert("用户名不能为空");
+           $(this).next().html("用户名不能为空");
+        }else{
+            if(!(/^[a-zA-Z_][a-zA-Z0-9_]{5,16}$/.test(mobile))){
+                $(this).next().html("请输入以字母开头，6-16个字符");
+            }else{
+                $(this).next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+            }
         }
-    })
 })
+//昵称正则验证
+$('.nickName').on('blur',function(){
+    var nickNameR = $('.nickName').val()
+    if(!nickNameR){
+        $(this).next().html("昵称不能为空");
+    }else{
+        $(this).next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+    }
+})
+
+
 //密码正则验证
 $('.passwordInp').on('blur',function(){
-    layui.use('layer',function(){
         var mobile = $('.passwordInp').val()
         if(!mobile){
-            layer.alert("密码不能为空");
-        }else if(!(/^\w{6,16}$/.test(mobile))){
-            layer.alert("最少6字符，最多16字符");
+            $(this).next().html("密码不能为空");
+
+        }else{
+            if(!(/^\w{6,16}$/.test(mobile))){
+                $(this).next().html("最少6字符，最多16字符");
+            }else{
+                $(this).next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+            }
         }
-    })
 })
 //确认密码匹配
 $('.confirm').on('blur',function(){
     if($('.passwordInp').val()!=$('.confirm').val()){
-        layui.use('layer',function(){
-            layer.alert("请输入相同的密码");
-        })
+        $(this).next().html("两次密码不一致");
+    }else{
+        $(this).next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
     }
+});
+//手机号正则验证
+$('.phoneLi').on('blur',function(){
+    var mobile = $('.phoneLi').val()
+    if(!mobile){
+        $(this).next().next().html("手机号不能为空");
+    }else{
+        if(!(/^1[0-9]{10}$/.test(mobile))){
+            $(this).next().next().html("请输入正确的手机号");
+        }else{
+            $(this).next().next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+        }
+    }
+    //})
 })
 //获取验证码
 var wait=60;
@@ -71,36 +92,41 @@ function time(o) {
             1000)
     }
 }
-$('#btn').on('click',function(){
-    time(this)
+$('.tamWz').on('click',function(){
+    //手机号正则验证通过
+    if($('.phoneLi').next().next().children().length==1){
+        //console.log(true)
+        time(this);
+        //获取手机验证码
+        let telNum =  $('.phoneLi').val();
+        $.ajax({
+            url:'/message',
+            type:'post',
+            data:{
+                telNum:telNum
+            },
+            success:function(data){
+                console.log(data)
+            }
+        })
+    }
 })
-$('.tamWz').on('click',function (){
-    //获取手机验证码
-    let telNum =   $('.phoneLi').val();
-    $.ajax({
-        url:'/message',
-        type:'post',
-        success:function(data){
-            console.log(data.message)
-            let url = `http://sapi.253.com/msg/HttpBatchSendSM?account=vip-lsy1&pswd=Tch5832075&mobile=${telNum}&msg=您的注册验证码是:${data.message}&needstatus=true`;
-            $.ajax({
-                url:url,
-                type:'post',
-                dataType: 'jsonp',
-                data:{
-                    //account=vip-lsy1&pswd=Tch5832075&mobile=18627798893&msg=您的注册验证码是:aaa&needstatus=true
-                    //account:'vip-lsy1',
-                    //pswd:'Tch5832075',
-                    //phone:'15727042308',
-                    //msg:'您的注册验证码是:1111'
-                    //needstatus:true
-                },
-                success:function (data){
-                    console.log(data)
-                }
-            })
-        }
-    })
 
 
-})
+//点击同意按钮
+//$('.tyxy').on('click',function (){
+//   console.log($('.loginName').val())
+//    $.ajax({
+//        url:'/add',
+//        type:'post',
+//        data:{
+//            loginName:$('.loginName').val(),
+//            nickName:$('.nickName').val(),
+//            password:$('.password').val(),
+//            tel:$('.tel').val()
+//        },
+//        success:function (data){
+//            alert(data)
+//        }
+//    })
+//})

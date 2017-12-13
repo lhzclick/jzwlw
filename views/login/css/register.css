@@ -121,3 +121,12 @@ a:hover {
     color:#5ca3e6;
     text-decoration:none;
 }
+.prompt{
+    font-size:12px ;
+    color: red;
+}
+.okReg{
+    position: relative;
+    top: 12px;
+    left: 16px;
+}
