@@ -63,6 +63,7 @@ $('.confirm').on('blur',function(){
 });
 //手机号正则验证
 $('.phoneLi').on('blur',function(){
+    let _this = $(this)
     var mobile = $('.phoneLi').val()
     if(!mobile){
         $(this).next().next().html("手机号不能为空");
@@ -70,7 +71,21 @@ $('.phoneLi').on('blur',function(){
         if(!(/^1[0-9]{10}$/.test(mobile))){
             $(this).next().next().html("请输入正确的手机号");
         }else{
-            $(this).next().next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+            $.ajax({
+                url:'/findTel',
+                type:'post',
+                data:{
+                    tel:$('.phoneLi').val()
+                },
+                success:function(data){
+                    if(data=="true"){
+                        _this.next().next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+                    }else{
+                        _this.next().next().html("用户未注册");
+                    }
+                }
+            })
+
         }
     }
 });
@@ -144,13 +159,15 @@ $('.tyxy').on('click',function (){
             success:function (data){
                 layui.use('layer',function(){
                     layer.alert(data);
-                    window.location.href="/login/pages/login"
+                    setInterval(function(){
+                        window.location.href="/login/pages/login";
+                    },1000)
                 })
             }
         })
     }else{
         layui.use('layer',function(){
-            layer.alert("请填写完整信息")
+            layer.alert("请勾选同意按钮或填写完整信息")
         })
     }
 })
