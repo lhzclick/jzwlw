@@ -78,10 +78,10 @@ $('.phoneLi').on('blur',function(){
                     tel:$('.phoneLi').val()
                 },
                 success:function(data){
-                    if(data=="true"){
+                    if(data=="false"){
                         _this.next().next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
                     }else{
-                        _this.next().next().html("用户未注册");
+                        _this.next().next().html("该手机号已注册");
                     }
                 }
             })
