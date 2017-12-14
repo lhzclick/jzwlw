@@ -1,7 +1,8 @@
 /**
  * Created by liuh on 2017/12/12.
  */
-    var on = true
+var on = true;
+let shortM;
 $('.checked').on('click',function(){
 
     if(on){
@@ -72,9 +73,9 @@ $('.phoneLi').on('blur',function(){
             $(this).next().next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
         }
     }
-    //})
-})
-//获取验证码
+});
+
+//倒计时函数
 var wait=60;
 function time(o) {
     if (wait == 0) {
@@ -92,6 +93,7 @@ function time(o) {
             1000)
     }
 }
+//点击获取验证码
 $('.tamWz').on('click',function(){
     //手机号正则验证通过
     if($('.phoneLi').next().next().children().length==1){
@@ -106,27 +108,48 @@ $('.tamWz').on('click',function(){
                 telNum:telNum
             },
             success:function(data){
-                console.log(data)
+                shortM = data.shortM;
+
             }
         })
     }
-})
+});
+
+
+//手机验证码验证
+$('.yzmIpt').on('blur',function(){
+    //判断用户验证码验证通过
+    if($('.yzmIpt').val()==shortM){
+        $(this).next().next().html(`<img class="okReg" src="/views/login/img/Ok.png">`)
+    }else{
+        $(this).next().next().html("请输入正确的验证码");
+    }
+});
 
 
 //点击同意按钮
-//$('.tyxy').on('click',function (){
-//   console.log($('.loginName').val())
-//    $.ajax({
-//        url:'/add',
-//        type:'post',
-//        data:{
-//            loginName:$('.loginName').val(),
-//            nickName:$('.nickName').val(),
-//            password:$('.password').val(),
-//            tel:$('.tel').val()
-//        },
-//        success:function (data){
-//            alert(data)
-//        }
-//    })
-//})
+$('.tyxy').on('click',function (){
+    let [loginName,phoneLi] = [$('.loginName').val(),$('.phoneLi').val()];
+    if($('.prompt img').length === 6 && $('.allReg')[0].checked == true){
+        //所有验证通过
+        $.ajax({
+            url:'/add',
+            type:'post',
+            data:{
+                loginName:$('.loginName').val(),
+                nickName:$('.nickName').val(),
+                password:$('.password').val(),
+                tel:$('.tel').val()
+            },
+            success:function (data){
+                layui.use('layer',function(){
+                    layer.alert(data)
+                })
+            }
+        })
+    }else{
+        layui.use('layer',function(){
+            layer.alert("请填写完整信息")
+        })
+    }
+})

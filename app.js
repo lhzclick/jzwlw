@@ -15,8 +15,10 @@ let  http = require('http');
 let  qs = require('querystring');
 
 
+//后台请求http
 let router = express.Router();
 let request = require('request');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -133,7 +135,7 @@ app.post('/add',function (req,res){
         }else {
             let isLogin = false;
             result.forEach(function (e,i){
-                if(e.loginName==loginName){
+                if(e.loginName==loginName|| e.tel==tel){
                     isLogin = true;
                 }
             });
@@ -147,17 +149,13 @@ app.post('/add',function (req,res){
                     }
                 });
             }else{
-                res.send("用户名已存在");
+                res.send("用户名或密码已存在");
             }
         }
     });
 });
 
 
-//生成发送短信码
-//app.post('/message', function (req, res) {
-
-//});
 //请求http短信接口
 app.post('/message', function(req, res){
     let Num="";
@@ -166,10 +164,11 @@ app.post('/message', function(req, res){
     };
     let bodyInfo = req.body;
     var method = req.method.toUpperCase();
-    var proxy_url = `http://sapi.253.com/msg/HttpBatchSendSM?account=vip-lsy1&pswd=Tch5832075&mobile=${bodyInfo.telNum}&msg=您的注册验证码是:${Num}&needstatus=true`;
+    var proxy_url = `http://sapi.253.com/msg/HttpBatchSendSM?account=vip-lsy1&pswd=Tch5832075&mobile=${bodyInfo.telNum}&msg=Your validation code : ${Num}&needstatus=true`;
     var options = {
         headers: {
-            "Connection": "close"
+            "Connection": "close",
+            value: 'application/x-www-form-urlencoded'
         },
         url: proxy_url,
         method: method,
@@ -187,14 +186,11 @@ app.post('/message', function(req, res){
     }
     request(options, callback);
 })
-
-
-
 //修改密码
 app.post('/update',function (req,res){
     let querys = req.body;
     let [tel,password] =  [querys.tel,querys.password];
-    var update = `update userInfo set age ="${password}"  where user ="${tel}"`;
+    var update = `update userInfo set password ="${password}"  where tel ="${tel}"`;
     //var sql = "update user set age = '"+ age +"',sex = '"+ sex +"',password = '"+ password +"' where user = " + user;
     connection.query(update,function(err,rows){
         if(err){
@@ -205,6 +201,29 @@ app.post('/update',function (req,res){
     });
 })
 
+//查询手机号是否存在
+app.post('/findTel',function (req,res){
+    let bodyInfo = req.body;
+    let tel= bodyInfo.tel;
+    let userGetSql = 'SELECT tel FROM userInfo';
+    connection.query(userGetSql,function(err,result){
+        if(err){
+            console.log('查询错误')
+        }else {
+            let isLogin = false;
+            result.forEach(function (e,i){
+                if(e.tel==tel){
+                    isLogin = true;
+                }
+            });
+            if(!isLogin){
+                res.send("false");
+            }else{
+                res.send("true");
+            }
+        }
+    });
+});
 
 
 
