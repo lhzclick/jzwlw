@@ -16,17 +16,31 @@ $('.checked').on('click',function(){
 
 //用户名正则验证
 $('.useInp').on('blur',function(){
-        var mobile = $('.useInp').val()
-        if(!mobile){
-            //layer.alert("用户名不能为空");
-           $(this).next().html("用户名不能为空");
+    let _this = $(this)
+    var mobile = $('.useInp').val()
+    if(!mobile){
+        //layer.alert("用户名不能为空");
+       $(this).next().html("用户名不能为空");
+    }else{
+        if(!(/^[a-zA-Z_][a-zA-Z0-9_]{5,16}$/.test(mobile))){
+            $(this).next().html("请输入以字母开头，6-16个字符");
         }else{
-            if(!(/^[a-zA-Z_][a-zA-Z0-9_]{5,16}$/.test(mobile))){
-                $(this).next().html("请输入以字母开头，6-16个字符");
-            }else{
-                $(this).next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
-            }
+            $.ajax({
+                url:'/findLoin',
+                type:'post',
+                data:{
+                    loginName:$('.useInp').val()
+                },
+                success:function(data){
+                    if(data=="false"){
+                        _this.next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+                    }else{
+                        _this.next().html("该用户名已存在");
+                    }
+                }
+            })
         }
+    }
 })
 //昵称正则验证
 $('.nickName').on('blur',function(){
@@ -85,7 +99,6 @@ $('.phoneLi').on('blur',function(){
                     }
                 }
             })
-
         }
     }
 });
