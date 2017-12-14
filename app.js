@@ -225,10 +225,10 @@ app.post('/findTel',function (req,res){
     });
 });
 
-//查询手用户名是否存在
-app.post('/findLoin',function (req,res){
+//查询用户名是否存在
+app.post('/findLogin',function (req,res){
     let bodyInfo = req.body;
-    let tel= bodyInfo.loginName;
+    let loginName= bodyInfo.loginName;
     let userGetSql = 'SELECT loginName FROM userInfo';
     connection.query(userGetSql,function(err,result){
         if(err){
@@ -236,7 +236,7 @@ app.post('/findLoin',function (req,res){
         }else {
             let isLogin = false;
             result.forEach(function (e,i){
-                if(e.tel==tel){
+                if(e.loginName==loginName){
                     isLogin = true;
                 }
             });
