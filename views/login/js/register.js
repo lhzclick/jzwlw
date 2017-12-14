@@ -143,7 +143,8 @@ $('.tyxy').on('click',function (){
             },
             success:function (data){
                 layui.use('layer',function(){
-                    layer.alert(data)
+                    layer.alert(data);
+                    window.location.href="/login/pages/login"
                 })
             }
         })
