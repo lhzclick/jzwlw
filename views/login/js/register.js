@@ -26,7 +26,7 @@ $('.useInp').on('blur',function(){
             $(this).next().html("请输入以字母开头，6-16个字符");
         }else{
             $.ajax({
-                url:'/findLoin',
+                url:'/findLogin',
                 type:'post',
                 data:{
                     loginName:$('.useInp').val()
