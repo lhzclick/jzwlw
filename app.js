@@ -49,13 +49,16 @@ var connection = mysql.createConnection({
     database:'loushanyunwebsite'
 })
 //执行连接
-connection.connect(function(err){
-    if(err){
-        console.log('[query]-:'+err);
-    }else{
-        console.log('conneting')
-    }
-})
+conn();
+function conn(){
+    connection.connect(function(err){
+        if(err){
+            conn();
+        }else{
+            console.log('conneting')
+        }
+    })
+}
 
 //配置session
 app.use(session({
