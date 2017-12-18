@@ -49,16 +49,13 @@ var connection = mysql.createConnection({
     database:'loushanyunwebsite'
 })
 //执行连接
-conn();
-function conn(){
-    connection.connect(function(err){
-        if(err){
-            conn();
-        }else{
-            console.log('conneting')
-        }
-    })
-}
+connection.connect(function(err){
+    if(err){
+        console.log('[query]-:'+err);
+    }else{
+        console.log('conneting')
+    }
+});
 
 //配置session
 app.use(session({
@@ -101,6 +98,7 @@ app.post('/info', function (req, res) {
 
         }
     });
+    connection.release();
 });
 //查询 读取session
 app.post('/userEx', function (req, res) {
@@ -129,6 +127,7 @@ app.post('/userEx', function (req, res) {
             }
         }
     });
+    connection.release();
 });
 
 
@@ -163,6 +162,7 @@ app.post('/add',function (req,res){
             }
         }
     });
+    connection.release();
 });
 
 
@@ -209,6 +209,7 @@ app.post('/update',function (req,res){
             res.send("修改成功");
         }
     });
+    connection.release();
 })
 
 //查询手机号是否存在
@@ -233,6 +234,7 @@ app.post('/findTel',function (req,res){
             }
         }
     });
+    connection.release();
 });
 
 //查询用户名是否存在
@@ -257,6 +259,7 @@ app.post('/findLogin',function (req,res){
             }
         }
     });
+    connection.release();
 });
 
 
