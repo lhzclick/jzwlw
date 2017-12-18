@@ -35,11 +35,11 @@ app.use('/users', users);
 app.use('/views', express.static('views'));   //配置项目静态文件
 //mysql创建连接
 //var connection = mysql.createConnection({
-//    host:'114.135.61.186',
+//    host:'114.135.61.187',
 //    user:'root',
 //    password:'root',
-//    port:'33061',
-//    database:'jzwlw'
+//    port:'33066',
+//    database:'loushanyunwebsite'
 //})
 var connection = mysql.createConnection({
     host:'localhost',
