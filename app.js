@@ -43,8 +43,8 @@ app.use('/views', express.static('views'));   //配置项目静态文件
 //})
 var connection = mysql.createConnection({
     host:'20.0.10.104',
-    user:'root',
-    password:'root',
+    user:'wj',
+    password:'@123..',
     port:'3306',
     database:'loushanyunwebsite'
 })
