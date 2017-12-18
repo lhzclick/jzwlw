@@ -42,11 +42,11 @@ app.use('/views', express.static('views'));   //配置项目静态文件
 //    database:'loushanyunwebsite'
 //})
 var connection = mysql.createConnection({
-    host:'localhost',
+    host:'114.135.61.186',
     user:'root',
     password:'root',
-    port:'3306',
-    database:'loushanyunwebsite'
+    port:'33061',
+    database:'jzwlw'
 })
 //执行连接
 connection.connect(function(err){
