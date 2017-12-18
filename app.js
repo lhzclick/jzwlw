@@ -34,12 +34,19 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/views', express.static('views'));   //配置项目静态文件
 //mysql创建连接
+//var connection = mysql.createConnection({
+//    host:'114.135.61.186',
+//    user:'root',
+//    password:'root',
+//    port:'33061',
+//    database:'jzwlw'
+//})
 var connection = mysql.createConnection({
-    host:'114.135.61.186',
+    host:'localhost',
     user:'root',
     password:'root',
-    port:'33061',
-    database:'jzwlw'
+    port:'3306',
+    database:'loushanyunwebsite'
 })
 //执行连接
 connection.connect(function(err){
