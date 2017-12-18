@@ -49,13 +49,24 @@ var connection = mysql.createConnection({
     database:'loushanyunwebsite'
 })
 //执行连接
-connection.connect(function(err){
-    if(err){
-        console.log('[query]-:'+err);
-    }else{
-        console.log('conneting')
-    }
+//connection.connect(function(err){
+//    if(err){
+//        console.log('[query]-:'+err);
+//    }else{
+//        console.log('conneting')
+//    }
+//});
+var pool  = mysql.createPool(connection);
+pool.getConnection(function(err, connection) {
+    // Use the connection
+    //connection.query( 'SELECT something FROM sometable', function(err, rows) {
+    //    // And done with the connection.
+    //    connection.end();
+    //
+    //});
+    console.log('conneting')
 });
+
 
 //配置session
 app.use(session({
