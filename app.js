@@ -34,13 +34,45 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/views', express.static('views'));   //配置项目静态文件
 //mysql创建连接
-var connection = mysql.createConnection({
-    host:'114.135.61.186',
-    user:'root',
-    password:'root',
-    port:'33061',
-    database:'jzwlw'
-})
+//var connection = mysql.createConnection({
+//    host:'114.135.61.186',
+//    user:'root',
+//    password:'root',
+//    port:'33061',
+//    database:'jzwlw'
+//})
+
+var connection;
+function handleError () {
+    connection = mysql.createConnection({
+        host:'114.135.61.186',
+        user:'root',
+        password:'root',
+        port:'33061',
+        database:'jzwlw'
+    });
+
+    //连接错误，2秒重试
+    connection.connect(function (err) {
+        if (err) {
+            console.log('error when connecting to db:', err);
+            setTimeout(handleError , 2000);
+        }else{
+            console.log("mysql已连接")
+        }
+    });
+    connection.on('error', function (err) {
+        console.log('db error', err);
+        // 如果是连接断开，自动重新连接
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            handleError();
+        } else {
+            throw err;
+        }
+    });
+}
+handleError();
+
 //var connection = mysql.createConnection({
 //    host:'20.0.10.104',
 //    user:'wj',
@@ -56,25 +88,13 @@ var connection = mysql.createConnection({
 //        console.log('conneting')
 //    }
 //});
-var pool  = mysql.createPool(connection);
-pool.getConnection(function(err, connection) {
-    // Use the connection
-    //connection.query( 'SELECT something FROM sometable', function(err, rows) {
-    //    // And done with the connection.
-    //    connection.end();
-    //
-    //});
-    console.log('conneting')
-});
-
-
 //配置session
 app.use(session({
     secret: 'this is the secret for cookie',
     resave: false,
     saveUninitialized: true
 }));
-//connection.end();
+
 //查询 登陆验证 写入session
 app.post('/info', function (req, res) {
     let bodyInfo = req.body;
@@ -110,6 +130,7 @@ app.post('/info', function (req, res) {
         }
     });
 });
+
 //查询 读取session
 app.post('/userEx', function (req, res) {
     let userGetSql = 'SELECT * FROM userInfo';
@@ -139,9 +160,6 @@ app.post('/userEx', function (req, res) {
     });
 });
 
-
-
-
 //注册 添加用户
 app.post('/add',function (req,res){
     let bodyInfo = req.body;
@@ -160,10 +178,10 @@ app.post('/add',function (req,res){
             if(!isLogin){
                 connection.query("insert into userInfo(loginName,password,tel,nickName) values('"+loginName+"','"+ password +"','"+tel+"','"+ nickName +"')",function(err,rows){
                     if(err){
-                        res.send("注册失败"+err);
+                        res.send("新增失败"+err);
                     }else {
-                        console.log('注册成功');
-                        res.send("注册成功");
+                        console.log('新增成功');
+                        res.send("新增成功");
                     }
                 });
             }else{
@@ -172,7 +190,6 @@ app.post('/add',function (req,res){
         }
     });
 });
-
 
 //请求http短信接口
 app.post('/message', function(req, res){
@@ -204,6 +221,7 @@ app.post('/message', function(req, res){
     }
     request(options, callback);
 })
+
 //修改密码
 app.post('/update',function (req,res){
     let querys = req.body;
@@ -269,7 +287,7 @@ app.post('/findLogin',function (req,res){
 
 
 
-
+/*---------------------404----------------------------*/
 
 // catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
