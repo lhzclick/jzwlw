@@ -34,20 +34,20 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/views', express.static('views'));   //配置项目静态文件
 //mysql创建连接
+var connection = mysql.createConnection({
+    host:'114.135.61.186',
+    user:'root',
+    password:'root',
+    port:'33061',
+    database:'jzwlw'
+})
 //var connection = mysql.createConnection({
-//    host:'114.135.61.187',
-//    user:'root',
-//    password:'root',
-//    port:'33066',
+//    host:'20.0.10.104',
+//    user:'wj',
+//    password:'@123..',
+//    port:'3306',
 //    database:'loushanyunwebsite'
 //})
-var connection = mysql.createConnection({
-    host:'20.0.10.104',
-    user:'wj',
-    password:'@123..',
-    port:'3306',
-    database:'loushanyunwebsite'
-})
 //执行连接
 //connection.connect(function(err){
 //    if(err){
@@ -160,10 +160,10 @@ app.post('/add',function (req,res){
             if(!isLogin){
                 connection.query("insert into userInfo(loginName,password,tel,nickName) values('"+loginName+"','"+ password +"','"+tel+"','"+ nickName +"')",function(err,rows){
                     if(err){
-                        res.send("新增失败"+err);
+                        res.send("注册失败"+err);
                     }else {
-                        console.log('新增成功');
-                        res.send("新增成功");
+                        console.log('注册成功');
+                        res.send("注册成功");
                     }
                 });
             }else{
