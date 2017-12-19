@@ -76,7 +76,7 @@ $('.confirm').on('blur',function(){
     }
 });
 //手机号正则验证
-$('.phoneLi').on('blur',function(){
+$('.phoneLi').on('blur input',function(){
     let _this = $(this)
     var mobile = $('.phoneLi').val()
     if(!mobile){
