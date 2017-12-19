@@ -66,7 +66,6 @@ $('.tamWz').on('click',function(){
             },
             success:function(data){
                 shortM = data.shortM;
-                console.log(shortM)
             }
         })
     }
