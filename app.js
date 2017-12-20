@@ -56,7 +56,7 @@ function handleError () {
     connection.connect(function (err) {
         if (err) {
             console.log('error when connecting to db:', err);
-            setTimeout(handleError , 2000);
+            setTimeout(handleError , 1000);
         }else{
             console.log("mysql已连接")
         }
