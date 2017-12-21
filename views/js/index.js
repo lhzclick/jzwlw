@@ -39,11 +39,7 @@ $('.codeList2').on('click',function(ev){
 $(document).on('click',function () {
     $('.codeList1').hide(200)
 })
-//点击分布管理
-$('.first').on('click',function(){
-    $('.mapContion').show();
-    $('.backTop').show()
-})
+
 //点击返回顶部
         var screenw = document.documentElement.clientWidth || document.body.clientWidth;
         var screenh = document.documentElement.clientHeight || document.body.clientHeight;
