@@ -1,9 +1,18 @@
 var express = require('express');
 var router = express.Router();
 let  rd = require('rd');
+let session =require('express-session');
+
+
+//配置session
+router.use(session({
+  secret: 'this is the secret for cookie',
+  resave: false,
+  saveUninitialized: true
+}));
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: req.session.loginName});
 });
 
 //同步遍历文件
