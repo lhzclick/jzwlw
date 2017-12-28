@@ -19,12 +19,12 @@
     float:right;
     width: 170px;
     text-align: center;
-    background: url(/views/img/usre-H.png) no-repeat 25px center;
+    background: url(/views/img/usre-H.png) no-repeat 15px center;
     position: relative;
 }
 .zhixiang{
     position: absolute;
-    right:20px;
+    right:15px;
     top:45%;
 }
 .usreNmae{
@@ -122,8 +122,11 @@
     background: rgba(245,219,118,.67);
     margin-right: 0;
 }
-.platformTab .first:hover{
+.platformTab .factory:hover{
     background: rgba(9,145,235,.92);
+}
+.platformTab .distribution:hover{
+    background: rgba(9,197,235,.92);
 }
 .codeTab{
     width: 240px;
@@ -181,8 +184,8 @@
 }
 .tymzTab li,.jymzTab li{
     float: left;
-    width:120px;
-    height: 120px;
+    width:256px;
+    height: 128px;
     background:#2c313d ;
     border-radius: 5px;
     margin-left:20px ;
@@ -248,7 +251,7 @@
 .download{
     float:right;
     font-size:14px;
-    color:#3d8fdb;
+    color:#7a7a7a;
 }
 .download a{
     display: inline-block;
@@ -259,6 +262,7 @@
     line-height: 38px;
     text-indent: 20px;
     font-size:16px;
+    margin-left:10px;
 }
 .download a:hover{
     background-color: #3d8fdb;
@@ -276,38 +280,29 @@
 .dataList2 select:nth-of-type(1){
     margin-right: 115px;
 }
-.dataTab{
+.dataTab,.dataTab1{
     width: 100%;
 }
-.dataTab th{
+.dataTab th,.dataTab1 th{
     font-weight: normal;
     font-size:16px;
     color:#fff;
     background: #5ca3e6;
     height: 48px;
 }
-.dataTab td{
+.dataTab td,.dataTab1 td{
     height: 48px;
     color:#7a7a7a;
     font-size:14px;
     text-align: center;
-    border-bottom:1px solid #e9edf0;
 }
-.dataTab .detail{
-    width: 150px;
+.dataTab .detail,.dataTab1 .detail1{
+    width: 100px;
 }
-.detail span{
-    float: left;
-    width: 48px;
-    height: 48px;
-}
-.detail .more{
+.detail{
     background: url("/views/img/more.png") no-repeat center center;
-    margin-left: 30px;
 }
-.detail .address{
-    background: url("/views/img/address.png") no-repeat center center;
-}
+
 /*分页*/
 .pagetab{
     padding-top: 50px;
@@ -346,7 +341,6 @@
     bottom:90px;
     width: 180px;
     height: 60px;
-    display: none;
 }
 .backTop span{
     float: left;
@@ -367,6 +361,9 @@
     background: #242c36 url(/views/img/zhishang.png) no-repeat center center;
    border-radius:5px;
     margin-left: 5px;
+}
+.mzData{
+    background: #fff;
 }
 /*通用组合式模组弹框*/
 .combinedTab li{
@@ -395,14 +392,14 @@
     width:96px;
     height: 36px;
     line-height:36px;
-    background: #5ca3e6;
+    background: #09c5eb;
     color:#fff;
     margin-top: 9px;
     margin-left: 70px;
     text-align: center;
 }
 .query:hover{
-    background: #3d8fdb;
+    background: #09bade;
 }
 .queryTime{
     margin-left: 25px;
@@ -423,7 +420,7 @@
     height: 48px;
     color: #fff;
     font-size:16px;
-    background:#5ca3e6;
+    background:#09c5eb;
     font-weight: normal;
 }
 .tabList1 td{
@@ -442,10 +439,6 @@
     height:108px;
     padding-left: 10px;
 }
-.colseBtm{
-    height: 60px;
-    border-top:1px solid #e9edf0;
-}
 .close{
     float:right;
     width: 94px;
@@ -458,9 +451,9 @@
     border-radius:5px;
 }
 .close:hover{
-    background: #db3b3e;
+    background: #e9edf0;
     padding:1px;
-    color:#fff;
+    border:0;
 }
 /*基本定位关联信息*/
 .locationTab{
@@ -485,4 +478,138 @@
     height: 34px;
     border: 1px solid #E9EDF0;
     line-height: 34px;
+}
+.modularWrap{
+    width: 1300px;
+    overflow: hidden;
+    margin:auto;
+    padding-top:30px;
+}
+.modular,.modular1{
+    float: left;
+    width: 200px;
+    line-height: 36px;
+    text-align: center;
+    background: #f0f4f7;
+    margin-right: 30px;
+}
+
+.jyytData{
+    background: #fff;
+}
+.modular-bg{
+     background: #5ca3e6;
+     color:#fff;
+ }
+.dataTab tr:nth-of-type(n){
+    background: #f0f4f7;
+}
+.dataTab tr:nth-of-type(2n){
+    background: #fff;
+}
+/*出厂设置弹框详情*/
+.factoryTab{
+    width: 100%;
+}
+.factoryTab td{
+    height:32px;
+    font-size:16px;
+    color:#7a7a7a;
+    text-indent: 20px;
+}
+.closeBtm{
+    border-top:1px solid #E9EDF0;
+   overflow: hidden;
+}
+.layui-layer{
+    border-radius:5px!important;
+}
+.layui-layer-title{
+    border-radius:5px 5px 0 0!important;
+}
+/*********************************分布管理*******************************/
+.map-bg{
+    background: #141213;
+}
+.tymz .fbglColor,.jymz .fbglColor{
+    color: #09c5eb;
+}
+.dataWz{
+    line-height: 72px;
+    height:72px;
+    background: #2c313d;
+    text-align: center;
+    color:#fff;
+    font-size:24px;
+}
+.mapPic{
+    height:754px;
+    width: 100%;
+    background: url("/views/img/mzMap.jpg") no-repeat center center;
+    background-size:100% 100% ;
+}
+.tabWrap{
+    width: 1200px;
+    height:240px;
+    margin: auto;
+}
+.mapTab{
+    width: 100%;
+    margin-top: 20px;
+}
+.mapTab th{
+    background: #09c5eb;
+    color:#fff;
+    font-weight: normal;
+    font-size:16px;
+    height:48px;
+}
+.mapTab td{
+    color:#7a7a7a;
+    font-size:16px;
+    height:48px;
+    text-align: center;
+}
+.mapTab .more span{
+    float:left;
+    width: 44px;
+    height: 48px;
+}
+.view{
+    background: url("/views/img/view.png") no-repeat center center;
+    margin-left: 5px;
+}
+.address{
+    background: url("/views/img/address.png") no-repeat center center;
+}
+.backTop{
+    display: none;
+}
+.tabList1 .enter{
+    background: url(/views/img/enter-h.png)no-repeat center center;
+}
+.sendData{
+    height: 430px;
+    overflow: auto;
+}
+.sendTab{
+    width:100%;
+}
+.sendTab th{
+    height:48px;
+    background: #09c5eb;
+    color:#fff;
+    font-weight: normal;
+}
+.sendTab td{
+    height:48px;
+    color:#7a7a7a;
+   text-align: center;
+    border-bottom:1px solid #e9edf0;
+}
+.layui-layer-title{
+    border: 0!important;
+}
+.layui-layer-ico{
+    background: url(/views/img/close.png) no-repeat!important;
 }
