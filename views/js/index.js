@@ -93,7 +93,7 @@ $('.factory').on('click',function(){
 
 //点击分布管理
 //初始化地图
-var map;
+var map,lineTool,polygonTool,handler;
 map = new T.Map('mapDiv', {
     attributionControl: false,
     inertia: false
@@ -116,7 +116,10 @@ $('.distribution').on('click',function(){
     ];
 
     map.centerAndZoom(new T.LngLat(106.840785, 28.212108), zoom);
+    var config = {
+        showLabel: true
 
+    };
     var arrayObj = new Array();
     for (var i = 0; i < data_info.length; i++) {
         var marker = new T.Marker(new T.LngLat(data_info[i][0],data_info[i][1]));  // 创建标注
@@ -139,7 +142,31 @@ $('.distribution').on('click',function(){
     var markers = new T.MarkerClusterer(map, {markers: arrayObj});
     markers.setGridSize(20);
     markers.setMaxZoom(16);
+    //创建标注工具对象
+    lineTool = new T.PolylineTool(map, config);
+    polygonTool = new T.PolygonTool(map, config);
+    //配置画笔
+    handler = new T.PaintBrushTool(map, {
+        keepdrawing: true,
+        style: {
+            weight: 3,
+            color:'red',
+            opacity:.8
+        }
+    });
     /*天地图调用结束*/
+    $('.Line').on('click',function (){
+        lineTool.open();
+    });
+    $('.Planimetry').on('click',function (){
+        polygonTool.open();
+    });
+    $('.Brush').on('click',function (){
+        handler.open();
+    });
+    $('.Trash').on('click',function (){
+        handler.clear();
+    });
 })
 
 $('.platformTab li').on('click',function () {
