@@ -436,8 +436,9 @@
     color:#7a7a7a;
 }
 .combinedTab .state {
-    height:108px;
+    height:80px;
     padding-left: 10px;
+    line-height: 40px;
 }
 .close{
     float:right;
@@ -612,4 +613,10 @@
 }
 .layui-layer-ico{
     background: url(/views/img/close.png) no-repeat!important;
+}
+.jyytsWrap{
+    height:170px;
+}
+.state{
+    border-bottom:1px solid #e9edf0;
 }
