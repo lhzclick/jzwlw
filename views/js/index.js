@@ -12,10 +12,10 @@ $.ajax({
     }
 })
 //获取一屏的高度
-var height = $(document).height()
-$('.dataPlatform').css('height',height)
-var height1= $(window).height()-60
-$('.platformBtm').css('height',height1)
+var scHeight = $(document).height()
+$('.platformWrap').css('height',scHeight)
+var scHeight1= $(window).height()-60
+$('.platformBtm').css('height',scHeight1)
 //顶部hover
 $('.back').mouseover(function(){
     $('.zhixiang').attr('src','/views/img/zhixia-w.png')
@@ -41,17 +41,17 @@ $(document).on('click',function () {
 })
 
 //点击返回顶部
-        var screenw = document.documentElement.clientWidth || document.body.clientWidth;
-        var screenh = document.documentElement.clientHeight || document.body.clientHeight;
-        $('.backR').css('left',screenw - $('.backR').offsetWidth +"px")
-        $('.backR').css('top',screenw - $('.backR').offsetHeight +"px")
-        window.onscroll = function(){
-            var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
-            $('.backR').css('top',screenw - $('.backR').offsetHeight+scrolltop+"px")
-        }
+//        var screenw = document.documentElement.clientWidth || document.body.clientWidth;
+//        var screenh = document.documentElement.clientHeight || document.body.clientHeight;
+//        $('.backR').css('left',screenw - $('.backR').offsetWidth +"px")
+//        $('.backR').css('top',screenw - $('.backR').offsetHeight +"px")
+//        window.onscroll = function(){
+//            var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+//            $('.backR').css('top',screenw - $('.backR').offsetHeight+scrolltop+"px")
+//        }
     $('.backR').on('click',function(){
-            document.documentElement.scrollTop = document.body.scrollTop =0;
-        })
+         $('body,html').animate({scrollTop:0},500);
+    })
 /*出厂设置模块切换*/
 $('.modular').eq(0).addClass('modular-bg')
 $('.modular').eq(0).on('click',function(){
@@ -117,14 +117,59 @@ var color1 =['rgba(9,145,235,.92)','rgba(9,197,235,.92)']
 var color2 =['rgba(9,145,235,.67)','rgba(9,197,235,.67)']
 var len = color1.length;
 $('.factory').on('click',function(){
-    $('.mapContion').show()
-    $('.backTop').show()
-    $('.scatterWrap').hide()
+    $('.mapContion').show();
+    $('.backTop').show();
+    $('.scatterWrap').hide();
+    $('body,html').animate({scrollTop:scHeight},500);
 })
+
+//点击分布管理
 $('.distribution').on('click',function(){
-    $('.mapContion').hide()
-    $('.scatterWrap').show()
-    $('.backTop').show()
+    $('body,html').animate({scrollTop:scHeight},500);
+    $('.mapContion').hide();
+    $('.scatterWrap').show();
+    $('.backTop').show();
+    /*天地图调用*/
+    var zoom = 5;
+    var data_info = [[106.840785, 28.212108,"桐梓县模组1"],
+        [106.841911, 28.214462,"桐梓县模组2"],
+        [106.841094, 28.213157,"桐梓县模组3"],
+        [106.840927, 28.213243,"桐梓县模组4"],
+        [114.370927, 30.608954,"武汉模组1"],
+        [114.480927, 30.088954,"武汉模组2"],
+        [116.810927, 40.688954,"北京模组1"],
+        [117.000927, 40.568954,"北京模组2"],
+    ];
+    var map;
+    map = new T.Map('mapDiv', {
+        attributionControl: false,
+        inertia: false
+    });
+    map.centerAndZoom(new T.LngLat(106.840785, 28.212108), zoom);
+
+    var arrayObj = new Array();
+    for (var i = 0; i < data_info.length; i++) {
+        var marker = new T.Marker(new T.LngLat(data_info[i][0],data_info[i][1]));  // 创建标注
+        var content = data_info[i][2];
+        arrayObj.push(marker);
+        addClickHandler(content,marker);
+    }
+    function addClickHandler(content,marker){
+        marker.addEventListener("click",function(e){
+                openInfo(content,e)}
+        );
+    }
+    function openInfo(content,e){
+        var point = e.lnglat;
+        marker = new T.Marker(point);// 创建标注
+        var markerInfoWin = new T.InfoWindow(content,{offset:new T.Point(0,-30)}); // 创建信息窗口对象
+        map.openInfoWindow(markerInfoWin,point); //开启信息窗口
+    }
+
+    var markers = new T.MarkerClusterer(map, {markers: arrayObj});
+    markers.setGridSize(20);
+    markers.setMaxZoom(16);
+    /*天地图调用结束*/
 })
 
 $('.platformTab li').on('click',function () {
@@ -549,3 +594,5 @@ $('.view').on('click',function(){
 
     });
 })
+
+

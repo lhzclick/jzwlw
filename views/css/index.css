@@ -341,6 +341,7 @@
     bottom:90px;
     width: 180px;
     height: 60px;
+    z-index: 2000;
 }
 .backTop span{
     float: left;
@@ -543,11 +544,12 @@
     color:#fff;
     font-size:24px;
 }
-.mapPic{
+#mapDiv{
     height:754px;
     width: 100%;
-    background: url("/views/img/mzMap.jpg") no-repeat center center;
-    background-size:100% 100% ;
+    /*position: static!important;*/
+    /*background: url("/views/img/mzMap.jpg") no-repeat center center;*/
+    /*background-size:100% 100% ;*/
 }
 .tabWrap{
     width: 1200px;
@@ -619,4 +621,15 @@
 }
 .state{
     border-bottom:1px solid #e9edf0;
+}
+
+/*天地图样式*/
+.tdt-cluster0{
+    background: url(/views/img/flag1.png)  no-repeat 10px 0 !important;
+    background-size: 36px 42px!important;
+    line-height: 20px!important;
+    font-size: 14px!important;
+    text-indent: 6px !important;
+    /*color: #09c5eb!important;*/
+    /*font-weight: normal!important;*/
 }
