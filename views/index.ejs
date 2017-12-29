@@ -6,6 +6,7 @@
     <!-- public文件-->
     <link rel="stylesheet" href="/css/reset.css"/>
     <link rel="stylesheet" href="/views/css/index.css"/>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
   </head>
   <body>
       <div class="dataPlatform">
@@ -97,319 +98,58 @@
                     </li>
                   </ul>
                   <!--通用组合式模组数据-->
-                  <table class="dataTab">
-                    <tr>
-                      <th style="width:180px;">物联SN</th>
-                      <th>使用类型</th>
-                      <th>工作模式</th>
-                      <th>无线频率</th>
-                      <th>发送频率</th>
-                      <th>发送功率</th>
-                      <th>网络交互</th>
-                      <th>出厂时间</th>
-                      <th>软件版本</th>
-                      <th>硬件版本</th>
-                      <th style="width:100px"></th>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>------</td>
-                      <td>17dbm</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td></td>
-                    </tr>
-                  </table>
+                  <div class="modularContain">
+                      <table class="dataTab">
+                        <tr>
+                          <th style="width:180px;">物联SN</th>
+                          <th style="width:117px;">使用类型</th>
+                          <th style="width:107px;">工作模式</th>
+                          <th style="width:107px;">无线频率</th>
+                          <th style="width:107px;">发送频率</th>
+                          <th style="width:107px;">发送功率</th>
+                          <th style="width:141px;">网络交互</th>
+                          <th style="width:118px;">出厂时间</th>
+                          <th style="width:108px;">软件版本</th>
+                          <th style="width:108px;">硬件版本</th>
+                          <th style="width:100px"></th>
+                        </tr>
+                      </table>
+                      <!--分页-->
+                      <div class="mzdataWrap">
+                        <table class="tabData" id="biuuu_city_list" border="0" cellspacing="0" cellpadding=""></table>
+                      </div>
+                      <div id="pages"></div>
+                  </div>
                   <!--家用一体式模组数据-->
-                  <table class="dataTab" style="display: none">
-                    <tr>
-                      <th style="width: 180px;">物联SN</th>
-                      <th>使用类型</th>
-                      <th>工作模式</th>
-                      <th>无线频率</th>
-                      <th>发送频率</th>
-                      <th>发送功率</th>
-                      <th>网络交互</th>
-                      <th>出厂时间</th>
-                      <th>软件版本</th>
-                      <th>硬件版本</th>
-                      <th>详情</th>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>-----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>-----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>-----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>-----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                    <tr>
-                      <td>01561117c6ca0ebf6846</td>
-                      <td>基站工业用</td>
-                      <td>从机模式</td>
-                      <td>470MHz</td>
-                      <td>24小时</td>
-                      <td>-----</td>
-                      <td>不带网络反馈</td>
-                      <td>2017-12-6</td>
-                      <td>1.0</td>
-                      <td>1.0</td>
-                      <td class="detail"></td>
-                    </tr>
-                  </table>
-                  <!--分页-->
-                  <ul class="pagetab">
-                    <li class="prev">上一页</li>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>.....</li>
-                    <li>100</li>
-                    <li class="next">下一页</li>
-                  </ul>
+                  <div class="modularContain" style="display: none">
+                    <table class="dataTab">
+                      <tr>
+                        <th style="width:180px;">物联SN</th>
+                        <th style="width:117px;">使用类型</th>
+                        <th style="width:107px;">工作模式</th>
+                        <th style="width:107px;">无线频率</th>
+                        <th style="width:107px;">发送频率</th>
+                        <th style="width:107px;">发送功率</th>
+                        <th style="width:141px;">网络交互</th>
+                        <th style="width:118px;">出厂时间</th>
+                        <th style="width:108px;">软件版本</th>
+                        <th style="width:108px;">硬件版本</th>
+                        <th style="width:100px">操作</th>
+                      </tr>
+                    </table>
+                    <!--分页-->
+                    <div class="mzdataWrap1">
+                      <table class="tabData" id="biuuu_city_list1" border="0" cellspacing="0" cellpadding=""></table>
+                    </div>
+                    <div id="pages1"></div>
+                  </div>
                 </div>
               </div>
           </div>
           <!--分布管理模组显示-->
           <div class="scatterWrap"style="display: none">
                 <!--分部管理模组顶部显示-->
-                <div class="mapContion">
+                <div class="mapContion1">
                   <div class="map-bg">
                     <div class="mapTop">
                       <div class="mapL">
@@ -443,6 +183,13 @@
                 </div>
                 <!--分部管理模组地图展示-->
                 <div class="mapData">
+                        <ul class="toolTab">
+                            <li class="tool">工具</li>
+                            <li class="Line" title="测距"></li>
+                            <li class="Planimetry" title="测面"></li>
+                            <li class="Brush" title="画笔"></li>
+                            <li class="Trash" title="删除画笔"></li>
+                        </ul>
                         <p class="dataWz">基站物联网大数据在线模组基础分布</p>
                         <div  id="mapDiv"></div>
                 </div>
