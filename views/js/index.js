@@ -124,6 +124,12 @@ $('.factory').on('click',function(){
 })
 
 //点击分布管理
+//初始化地图
+var map;
+map = new T.Map('mapDiv', {
+    attributionControl: false,
+    inertia: false
+});
 $('.distribution').on('click',function(){
     $('body,html').animate({scrollTop:scHeight},500);
     $('.mapContion').hide();
@@ -140,11 +146,7 @@ $('.distribution').on('click',function(){
         [116.810927, 40.688954,"北京模组1"],
         [117.000927, 40.568954,"北京模组2"],
     ];
-    var map;
-    map = new T.Map('mapDiv', {
-        attributionControl: false,
-        inertia: false
-    });
+
     map.centerAndZoom(new T.LngLat(106.840785, 28.212108), zoom);
 
     var arrayObj = new Array();
