@@ -11,6 +11,13 @@ $.ajax({
         }
     }
 })
+//浏览器窗口改变
+window.onresize = function(){
+    var scHeight = $(document).height()
+    $('.platformWrap').css('height',scHeight)
+    var scHeight1= $(window).height()-60
+    $('.platformBtm').css('height',scHeight1)
+}
 //获取一屏的高度
 var scHeight = $(document).height()
 $('.platformWrap').css('height',scHeight)
@@ -52,65 +59,26 @@ $(document).on('click',function () {
     $('.backR').on('click',function(){
          $('body,html').animate({scrollTop:0},500);
     })
+/*返回顶部hover*/
+$('.backR').mouseover(function(){
+    $(this).prev().show();
+});
+$('.backR').mouseout(function(){
+    $(this).prev().hide();
+});
 /*出厂设置模块切换*/
 $('.modular').eq(0).addClass('modular-bg')
 $('.modular').eq(0).on('click',function(){
     $(this).addClass('modular-bg')
     $(this).next().removeClass('modular-bg')
-    $('.dataTab').eq(0).show()
-    $('.dataTab').eq(1).hide()
+    $('.modularContain').eq(0).show()
+    $('.modularContain').eq(1).hide()
 })
 $('.modular').eq(1).on('click',function(){
     $(this).addClass('modular-bg')
     $(this).prev().removeClass('modular-bg')
-    $('.dataTab').eq(1).show()
-    $('.dataTab').eq(0).hide()
-})
-/*出厂设置点击详情弹框*/
-$('.detail').on('click',function(){
-    let factoryData =`
-    <div _class="factoryData">
-            <div class="jyytsWrap">
-            <table class="factoryTab" border="0" cellspacing="0" >
-                <tr>
-                    <td>物联SN:10811017C64DA4AB</td>
-                    <td>模拟信号：双EV</td>
-                    <td>电源状态：正常 </td>
-                </tr>
-                <tr>
-                    <td>强磁：有</td>
-                    <td>拆卸：有    </td>
-                    <td>倒流：空 </td>
-                </tr>
-                <tr>
-                    <td>传感器故障：空  </td>
-                    <td>阀门状态：空</td>
-                    <td>表号：0 </td>
-                </tr>
-                <tr>
-                    <td>ID：1215684715794571848  </td>
-                    <td>脉冲值：154614815</td>
-                    <td>倍率（m³）：0.001</td>
-                </tr>
-            </table>
-         </div>
-        <div class="closeBtm">
-            <span class="close">关闭</span>
-        </div>
-    </div>
-    `
-    layui.use('layer', function(){
-        var layer = layui.layer;
-        var index=layer.open({
-            type: 1,
-            title: ['家用一体式模组出厂设置信息', 'font-size:18px;color:#fff;text-align:center;background:#5ca3e6'],
-            area: ['720px', '300px'],
-            content: factoryData
-        });
-        $('.close').on('click',function(){
-            layer.close(index)
-        })
-    });
+    $('.modularContain').eq(1).show()
+    $('.modularContain').eq(0).hide()
 })
 /*点击出厂设置*/
 var color1 =['rgba(9,145,235,.92)','rgba(9,197,235,.92)']
@@ -596,5 +564,142 @@ $('.view').on('click',function(){
 
     });
 })
-
+/********************************************************分页调取**************************/
+layui.use(['laypage', 'layer'], function(){
+    var laypage = layui.laypage
+        ,layer = layui.layer;
+    //调用分页
+    //测试数据
+    var data = [
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+        {'wlSN':'01561117c6ca0ebf6846','UseType':'基站工业用','working':'从机模式','radio':'470MHz','send':'------','power':'17dbm','network':'不带网络反馈','factory':'2017-12-6','software':'1.0','hardware':'1.0'},
+    ];
+    let tabData =`
+        <tr>
+            <td style="width:180px;">${data[0].wlSN}</td>
+            <td style="width:117px;">${data[0].UseType}</td>
+            <td style="width:107px;">${data[0].working}</td>
+            <td style="width:107px;">${data[0].radio}</td>
+            <td style="width:107px;">${data[0].send}</td>
+            <td style="width:107px;">${data[0].power}</td>
+            <td style="width:141px;">${data[0].network}</td>
+            <td style="width:118px;">${data[0].factory}</td>
+            <td style="width:108px;">${data[0].software}</td>
+            <td style="width:108px;">${data[0].hardware}</td>
+            <td style="width:100px;"></td>
+        </tr>
+				  	`
+     let tabData1 =`
+            <tr>
+                <td style="width:180px;">${data[0].wlSN}</td>
+                <td style="width:117px;">${data[0].UseType}</td>
+                <td style="width:107px;">${data[0].working}</td>
+                <td style="width:107px;">${data[0].radio}</td>
+                <td style="width:107px;">${data[0].send}</td>
+                <td style="width:107px;">${data[0].power}</td>
+                <td style="width:141px;">${data[0].network}</td>
+                <td style="width:118px;">${data[0].factory}</td>
+                <td style="width:108px;">${data[0].software}</td>
+                <td style="width:108px;">${data[0].hardware}</td>
+                <td class='detail' style="width:100px;"></td>
+            </tr>
+				  	`
+                /*通用组合式分页*/
+				  laypage.render({
+                      elem: 'pages'
+                      ,count: data.length
+                      ,jump: function(obj){
+                          //模拟渲染
+                          document.getElementById('biuuu_city_list').innerHTML = function(){
+                              var arr = []
+                                  ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+                              layui.each(thisData, function(index, item){
+                                  arr.push(tabData);
+                              });
+                              return arr.join('');
+                          }();
+                      }
+                  });
+                /*家用一体式分页*/
+                laypage.render({
+                    elem: 'pages1'
+                    ,count: data.length
+                    ,jump: function(obj){
+                        //模拟渲染
+                        document.getElementById('biuuu_city_list1').innerHTML = function(){
+                            var arr = []
+                                ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+                            layui.each(thisData, function(index, item){
+                                arr.push(tabData1);
+                            });
+                            return arr.join('');
+                        }();
+                    }
+                });
+        /*出厂设置点击详情弹框*/
+        $('.detail').on('click',function(){
+            let factoryData =`
+            <div _class="factoryData">
+                <div class="jyytsWrap">
+                <table class="factoryTab" border="0" cellspacing="0" >
+                <tr>
+                <td>物联SN:10811017C64DA4AB</td>
+            <td>模拟信号：双EV</td>
+            <td>电源状态：正常 </td>
+            </tr>
+            <tr>
+            <td>强磁：有</td>
+            <td>拆卸：有    </td>
+            <td>倒流：空 </td>
+            </tr>
+            <tr>
+            <td>传感器故障：空  </td>
+            <td>阀门状态：空</td>
+            <td>表号：0 </td>
+            </tr>
+            <tr>
+            <td>ID：1215684715794571848  </td>
+            <td>脉冲值：154614815</td>
+            <td>倍率（m³）：0.001</td>
+            </tr>
+            </table>
+            </div>
+            <div class="closeBtm">
+                <span class="close">关闭</span>
+                </div>
+                </div>
+        `
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                var index=layer.open({
+                    type: 1,
+                    title: ['家用一体式模组出厂设置信息', 'font-size:18px;color:#fff;text-align:center;background:#5ca3e6'],
+                    area: ['720px', '300px'],
+                    content: factoryData
+                });
+                $('.close').on('click',function(){
+                    layer.close(index)
+                })
+            });
+        })
+});
 
