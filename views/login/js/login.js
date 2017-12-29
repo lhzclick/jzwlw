@@ -57,3 +57,4 @@ TouchSlide({
     autoPage:true,//自动分页
     autoPlay:true //自动播放
 });
+//111
