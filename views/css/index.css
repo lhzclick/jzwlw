@@ -61,12 +61,15 @@
 }
 .platformBtm{
     background: url(/views/img/data-bg.jpg) no-repeat center center;
+    position: relative;
 }
 .platformTab{
     width: 990px;
-    margin: auto;
-   padding-top: 260px;
     overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .platformTab li{
     float:left;
@@ -346,6 +349,9 @@
 .backTop span{
     float: left;
 }
+.backTop .backR{
+    float: right;
+}
 .backL{
     width: 65px;
     height: 30px;
@@ -361,7 +367,7 @@
     height: 48px;
     background: #242c36 url(/views/img/zhishang.png) no-repeat center center;
    border-radius:5px;
-    margin-left: 5px;
+    margin-right: 60px;
 }
 .mzData{
     background: #fff;
@@ -632,4 +638,79 @@
     text-indent: 6px !important;
     /*color: #09c5eb!important;*/
     /*font-weight: normal!important;*/
+}
+/**********************************分页**********/
+.tabData,.dataHead {
+    width:1300px;
+}
+.tabData td{
+    height:48px;
+    color:#7a7a7a;
+    text-align: center;
+    font-size:16px;
+}
+.dataHead td{
+    height:48px;
+    color:#fff;
+    text-align: center;
+    font-size:16px;
+    background: #5ca3e6;
+}
+.mzdataWrap，.mzdataWrap1{
+    height: 480px;
+}
+#pages,#pages1{
+    width: 500px;
+    margin: auto;
+}
+.backL{
+    display:none;
+}
+/********************************天地图工具样式*****************/
+.mapData{
+    position: relative;
+}
+.toolTab{
+    position: absolute;
+    top: 82px;
+    right:10px;
+    background: #fff;
+    border-radius:5px;
+    z-index: 2000;
+    padding:0 10px;
+}
+.toolTab li{
+    float:left;
+    height:42px;
+    width: 50px;
+}
+.toolTab .tool{
+    width:80px;
+    line-height: 42px;
+    text-indent: 40px;
+    background: url(/views/img/Tool.png) no-repeat 10px center;
+}
+.toolTab .Line{
+    background: url(/views/img/Line.png) no-repeat center center;
+}
+.toolTab .Line:hover{
+    background-image: url(/views/img/Line-h.png)
+}
+.toolTab .Planimetry{
+    background: url(/views/img/Planimetry.png) no-repeat center center;
+}
+.toolTab .Planimetry:hover{
+    background-image: url(/views/img/Planimetry-h.png)
+}
+.toolTab .Brush{
+    background: url(/views/img/Brush.png) no-repeat center center;
+}
+.toolTab .Brush:hover{
+    background-image: url(/views/img/Brush-h.png)
+}
+.toolTab .Trash{
+    background: url(/views/img/Trash.png) no-repeat center center;
+}
+.toolTab .Trash:hover{
+    background-image: url(/views/img/Trash-h.png)
 }
