@@ -40,14 +40,14 @@ $(document).on('click',function () {
 //点击出现二维码
 $('.codeList1').hide()
 $('.codeList2').on('click',function(ev){
-    $('.codeList1').show(200)
+    $('.codeList1').fadeIn()
     ev.stopPropagation();
 })
 $(document).on('click',function () {
-    $('.codeList1').hide(200)
+    $('.codeList1').fadeOut()
 })
 
-//点击返回顶部
+// 点击返回顶部
 //        var screenw = document.documentElement.clientWidth || document.body.clientWidth;
 //        var screenh = document.documentElement.clientHeight || document.body.clientHeight;
 //        $('.backR').css('left',screenw - $('.backR').offsetWidth +"px")
