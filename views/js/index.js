@@ -80,7 +80,7 @@ $('.modular').eq(1).on('click',function(){
     $('.modularContain').eq(1).show()
     $('.modularContain').eq(0).hide()
 })
-/*点击出厂设置*/
+/*点击项目名称*/
 var color1 =['rgba(9,145,235,.92)','rgba(9,197,235,.92)']
 var color2 =['rgba(9,145,235,.67)','rgba(9,197,235,.67)']
 var len = color1.length;
@@ -680,53 +680,53 @@ layui.use(['laypage', 'layer'], function(){
                             });
                             return arr.join('');
                         }();
+                        /*出厂设置点击详情弹框*/
+                        $('.detail').on('click',function(){
+                            let factoryData =`
+                            <div _class="factoryData">
+                                <div class="jyytsWrap">
+                                     <table class="factoryTab" border="0" cellspacing="0" >
+                                         <tr>
+                                                <td>物联SN:10811017C64DA4AB</td>
+                                                <td>模拟信号：双EV</td>
+                                                <td>电源状态：正常 </td>
+                                         </tr>
+                                         <tr>
+                                                <td>强磁：有</td>
+                                                <td>拆卸：有    </td>
+                                                <td>倒流：空 </td>
+                                         </tr>
+                                         <tr>
+                                                <td>传感器故障：空  </td>
+                                                <td>阀门状态：空</td>
+                                                <td>表号：0 </td>
+                                         </tr>
+                                         <tr>
+                                                <td>ID：1215684715794571848  </td>
+                                                <td>脉冲值：154614815</td>
+                                                <td>倍率（m³）：0.001</td>
+                                         </tr>
+                                </table>
+                            </div>
+                            <div class="closeBtm">
+                                <span class="close">关闭</span>
+                            </div>
+                        </div>
+        `
+                            layui.use('layer', function(){
+                                var layer = layui.layer;
+                                var index=layer.open({
+                                    type: 1,
+                                    title: ['家用一体式模组出厂设置信息', 'font-size:18px;color:#fff;text-align:center;background:#5ca3e6'],
+                                    area: ['720px', '300px'],
+                                    content: factoryData
+                                });
+                                $('.close').on('click',function(){
+                                    layer.close(index)
+                                })
+                            });
+                        })
                     }
                 });
-        /*出厂设置点击详情弹框*/
-        $('.detail').on('click',function(){
-            let factoryData =`
-            <div _class="factoryData">
-                <div class="jyytsWrap">
-                <table class="factoryTab" border="0" cellspacing="0" >
-                <tr>
-                <td>物联SN:10811017C64DA4AB</td>
-            <td>模拟信号：双EV</td>
-            <td>电源状态：正常 </td>
-            </tr>
-            <tr>
-            <td>强磁：有</td>
-            <td>拆卸：有    </td>
-            <td>倒流：空 </td>
-            </tr>
-            <tr>
-            <td>传感器故障：空  </td>
-            <td>阀门状态：空</td>
-            <td>表号：0 </td>
-            </tr>
-            <tr>
-            <td>ID：1215684715794571848  </td>
-            <td>脉冲值：154614815</td>
-            <td>倍率（m³）：0.001</td>
-            </tr>
-            </table>
-            </div>
-            <div class="closeBtm">
-                <span class="close">关闭</span>
-                </div>
-                </div>
-        `
-            layui.use('layer', function(){
-                var layer = layui.layer;
-                var index=layer.open({
-                    type: 1,
-                    title: ['家用一体式模组出厂设置信息', 'font-size:18px;color:#fff;text-align:center;background:#5ca3e6'],
-                    area: ['720px', '300px'],
-                    content: factoryData
-                });
-                $('.close').on('click',function(){
-                    layer.close(index)
-                })
-            });
-        })
 });
 
