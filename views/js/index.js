@@ -654,6 +654,7 @@ layui.use(['laypage', 'layer'], function(){
 				  laypage.render({
                       elem: 'pages'
                       ,count: data.length
+                      ,theme:'#5ca3e6'
                       ,jump: function(obj){
                           //模拟渲染
                           document.getElementById('biuuu_city_list').innerHTML = function(){
@@ -670,6 +671,7 @@ layui.use(['laypage', 'layer'], function(){
                 laypage.render({
                     elem: 'pages1'
                     ,count: data.length
+                    ,theme:'#5ca3e6'
                     ,jump: function(obj){
                         //模拟渲染
                         document.getElementById('biuuu_city_list1').innerHTML = function(){
