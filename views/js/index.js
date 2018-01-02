@@ -13,13 +13,13 @@ $.ajax({
 })
 //浏览器窗口改变
 window.onresize = function(){
-    var scHeight = $(document).height()
+    var scHeight = $(window).height()
     $('.platformWrap').css('height',scHeight)
     var scHeight1= $(window).height()-60
     $('.platformBtm').css('height',scHeight1)
 }
 //获取一屏的高度
-var scHeight = $(document).height()
+var scHeight = $(window).height()
 $('.platformWrap').css('height',scHeight)
 var scHeight1= $(window).height()-60
 $('.platformBtm').css('height',scHeight1)
