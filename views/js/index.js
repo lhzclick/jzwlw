@@ -47,7 +47,7 @@ $(document).on('click',function () {
     $('.codeList1').fadeOut()
 })
 
-//点击返回顶部
+// 点击返回顶部
 //        var screenw = document.documentElement.clientWidth || document.body.clientWidth;
 //        var screenh = document.documentElement.clientHeight || document.body.clientHeight;
 //        $('.backR').css('left',screenw - $('.backR').offsetWidth +"px")
