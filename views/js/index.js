@@ -156,13 +156,13 @@ $('.distribution').on('click',function(){
     });
     /*天地图调用结束*/
     $('.Line').on('click',function (){
-        lineTool.open();
+            lineTool.open();
     });
     $('.Planimetry').on('click',function (){
-        polygonTool.open();
+            polygonTool.open();
     });
     $('.Brush').on('click',function (){
-        handler.open();
+           handler.close();
     });
     $('.Trash').on('click',function (){
         handler.clear();
