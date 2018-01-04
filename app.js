@@ -34,60 +34,14 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/views', express.static('views'));   //配置项目静态文件
 //mysql创建连接
-//var connection = mysql.createConnection({
-//    host:'114.135.61.186',
-//    user:'root',
-//    password:'root',
-//    port:'33061',
-//    database:'jzwlw'
-//})
-
-var connection;
-function handleError () {
-    connection = mysql.createConnection({
-        host:'114.135.61.186',
+var pool = mysql.createPool({
+        host:'localhost',
         user:'root',
         password:'root',
-        port:'33061',
-        database:'jzwlw'
+        port:'3306',
+        database:'node'
     });
 
-    //连接错误，2秒重试
-    connection.connect(function (err) {
-        if (err) {
-            console.log('error when connecting to db:', err);
-            setTimeout(handleError , 1000);
-        }else{
-            console.log("mysql已连接")
-        }
-    });
-    connection.on('error', function (err) {
-        console.log('db error', err);
-        // 如果是连接断开，自动重新连接
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            handleError();
-        } else {
-            throw err;
-        }
-    });
-}
-handleError();
-
-//var connection = mysql.createConnection({
-//    host:'20.0.10.104',
-//    user:'wj',
-//    password:'@123..',
-//    port:'3306',
-//    database:'loushanyunwebsite'
-//})
-//执行连接
-//connection.connect(function(err){
-//    if(err){
-//        console.log('[query]-:'+err);
-//    }else{
-//        console.log('conneting')
-//    }
-//});
 //配置session
 app.use(session({
     secret: 'this is the secret for cookie',
@@ -99,65 +53,80 @@ app.use(session({
 app.post('/info', function (req, res) {
     let bodyInfo = req.body;
     let userGetSql = 'SELECT * FROM userInfo';
-    connection.query(userGetSql,function(err,result){
+    pool.getConnection(function(err,connection){
         if(err){
-            console.log('查询错误')
+            console.log('err')
         }else{
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "X-Requested-With");
-            res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-            res.header("X-Powered-By",' 3.2.1')
-            res.header("Content-Type", "application/json;charset=utf-8");
-            //res.send(result);
-            let sucOn = -1;
-            result.forEach(function(e,i){
-                if(bodyInfo.loginName==e.loginName&&bodyInfo.password==e.password){
-                    sucOn=i;
-                }else if(bodyInfo.loginName==e.tel&&bodyInfo.password==e.password){
-                    sucOn=i;
+            connection.query(userGetSql,function(err,result){
+                if(err){
+                    console.log('查询错误1')
+                }else{
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+                    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+                    res.header("X-Powered-By",' 3.2.1')
+                    res.header("Content-Type", "application/json;charset=utf-8");
+                    //res.send(result);
+                    let sucOn = -1;
+                    result.forEach(function(e,i){
+                        if(bodyInfo.loginName==e.loginName&&bodyInfo.password==e.password){
+                            sucOn=i;
+                        }else if(bodyInfo.loginName==e.tel&&bodyInfo.password==e.password){
+                            sucOn=i;
+                        }
+                    });
+                    if(sucOn!=-1){
+                        req.session.loginName = result[sucOn].loginName;
+                        req.session.password = result[sucOn].password;
+                        req.session.nickName = result[sucOn].nickName;
+                        req.session.tel = result[sucOn].tel;
+                        res.send(true);
+                    }else{
+                        res.send(false);
+                    }
+                    connection.release( );
                 }
             });
-            if(sucOn!=-1){
-                req.session.loginName = result[sucOn].loginName;
-                req.session.password = result[sucOn].password;
-                req.session.nickName = result[sucOn].nickName;
-                req.session.tel = result[sucOn].tel;
-                res.send(true);
-            }else{
-                res.send(false);
-            }
-
         }
-    });
+    })
+
 });
 
 //查询 读取session
 app.post('/userEx', function (req, res) {
     let userGetSql = 'SELECT * FROM userInfo';
-    connection.query(userGetSql,function(err,result){
+    pool.getConnection(function(err,connection){
         if(err){
-            console.log('查询错误')
+            console.log('err')
         }else{
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "X-Requested-With");
-            res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-            res.header("X-Powered-By",' 3.2.1')
-            res.header("Content-Type", "application/json;charset=utf-8");
-            let sucOn = -1;
-            result.forEach(function(e,i){
-                if(req.session.loginName==e.loginName&&req.session.password==e.password){
-                    sucOn=i;
-                }else if(req.session.loginName==e.tel&&req.session.password==e.password){
-                    sucOn=i;
+            connection.query(userGetSql,function(err,result){
+                if(err){
+                    console.log('查询错误2')
+                }else{
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+                    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+                    res.header("X-Powered-By",' 3.2.1')
+                    res.header("Content-Type", "application/json;charset=utf-8");
+                    let sucOn = -1;
+                    result.forEach(function(e,i){
+                        if(req.session.loginName==e.loginName&&req.session.password==e.password){
+                            sucOn=i;
+                        }else if(req.session.loginName==e.tel&&req.session.password==e.password){
+                            sucOn=i;
+                        }
+                    });
+                    if(sucOn!=-1){
+                        res.send(req.session);
+                    }else{
+                        res.send(false);
+                    }
+                    connection.release( );
                 }
             });
-            if(sucOn!=-1){
-                res.send(req.session);
-            }else{
-                res.send(false);
-            }
         }
-    });
+    })
+
 });
 
 //注册 添加用户
@@ -165,30 +134,38 @@ app.post('/add',function (req,res){
     let bodyInfo = req.body;
     let [loginName,password,tel,nickName] = [bodyInfo.loginName,bodyInfo.password,bodyInfo.tel,bodyInfo.nickName];
     let userGetSql = 'SELECT * FROM userInfo';
-    connection.query(userGetSql,function(err,result){
+    pool.getConnection(function(err,connection){
         if(err){
-            console.log('查询错误')
-        }else {
-            let isLogin = false;
-            result.forEach(function (e,i){
-                if(e.loginName==loginName|| e.tel==tel){
-                    isLogin = true;
+            console.log('err')
+        }else{
+            connection.query(userGetSql,function(err,result){
+                if(err){
+                    console.log('查询错误3')
+                }else {
+                    let isLogin = false;
+                    result.forEach(function (e,i){
+                        if(e.loginName==loginName|| e.tel==tel){
+                            isLogin = true;
+                        }
+                    });
+                    if(!isLogin){
+                        connection.query("insert into userInfo(loginName,password,tel,nickName) values('"+loginName+"','"+ password +"','"+tel+"','"+ nickName +"')",function(err,rows){
+                            if(err){
+                                res.send("新增失败"+err);
+                            }else {
+                                console.log('新增成功');
+                                res.send("新增成功");
+                            }
+                        });
+                    }else{
+                        res.send("用户名或密码已存在");
+                    }
+                    connection.release( );
                 }
             });
-            if(!isLogin){
-                connection.query("insert into userInfo(loginName,password,tel,nickName) values('"+loginName+"','"+ password +"','"+tel+"','"+ nickName +"')",function(err,rows){
-                    if(err){
-                        res.send("新增失败"+err);
-                    }else {
-                        console.log('新增成功');
-                        res.send("新增成功");
-                    }
-                });
-            }else{
-                res.send("用户名或密码已存在");
-            }
         }
-    });
+    })
+
 });
 
 //请求http短信接口
@@ -228,13 +205,21 @@ app.post('/update',function (req,res){
     let [tel,password] =  [querys.tel,querys.password];
     var update = `update userInfo set password ="${password}"  where tel ="${tel}"`;
     //var sql = "update user set age = '"+ age +"',sex = '"+ sex +"',password = '"+ password +"' where user = " + user;
-    connection.query(update,function(err,rows){
+    pool.getConnection(function(err,connection){
         if(err){
-            res.send("修改失败 " + err);
-        }else {
-            res.send("修改成功");
+            console.log('err')
+        }else{
+            connection.query(update,function(err,rows){
+                if(err){
+                    res.send("修改失败 " + err);
+                }else {
+                    res.send("修改成功");
+                    connection.release( );
+                }
+            });
         }
-    });
+    })
+
 })
 
 //查询手机号是否存在
@@ -242,23 +227,31 @@ app.post('/findTel',function (req,res){
     let bodyInfo = req.body;
     let tel= bodyInfo.tel;
     let userGetSql = 'SELECT tel FROM userInfo';
-    connection.query(userGetSql,function(err,result){
+    pool.getConnection(function(err,connection){
         if(err){
-            console.log('查询错误')
-        }else {
-            let isLogin = false;
-            result.forEach(function (e,i){
-                if(e.tel==tel){
-                    isLogin = true;
+            console.log('err')
+        }else{
+            connection.query(userGetSql,function(err,result){
+                if(err){
+                    console.log('查询错误4')
+                }else {
+                    let isLogin = false;
+                    result.forEach(function (e,i){
+                        if(e.tel==tel){
+                            isLogin = true;
+                        }
+                    });
+                    if(!isLogin){
+                        res.send("false");
+                    }else{
+                        res.send("true");
+                    }
+                    connection.release( );
                 }
             });
-            if(!isLogin){
-                res.send("false");
-            }else{
-                res.send("true");
-            }
         }
-    });
+    })
+
 });
 
 //查询用户名是否存在
@@ -266,23 +259,31 @@ app.post('/findLogin',function (req,res){
     let bodyInfo = req.body;
     let loginName= bodyInfo.loginName;
     let userGetSql = 'SELECT loginName FROM userInfo';
-    connection.query(userGetSql,function(err,result){
+    pool.getConnection(function(err,connection){
         if(err){
-            console.log('查询错误')
-        }else {
-            let isLogin = false;
-            result.forEach(function (e,i){
-                if(e.loginName==loginName){
-                    isLogin = true;
+            console.log('err')
+        }else{
+            connection.query(userGetSql,function(err,result){
+                if(err){
+                    console.log('查询错误5')
+                }else {
+                    let isLogin = false;
+                    result.forEach(function (e,i){
+                        if(e.loginName==loginName){
+                            isLogin = true;
+                        }
+                    });
+                    if(!isLogin){
+                        res.send("false");
+                    }else{
+                        res.send("true");
+                    }
+                    connection.release( );
                 }
             });
-            if(!isLogin){
-                res.send("false");
-            }else{
-                res.send("true");
-            }
         }
-    });
+    })
+
 });
 
 
