@@ -84,12 +84,14 @@
     height: 180px;
     background: rgba(9,145,235,.67);
     margin-bottom: 30px;
+    cursor: pointer;
 }
 .platformTab li:nth-of-type(2){
     width: 360px;
     height: 180px;
     background: rgba(9,197,235,.67);
     margin-bottom: 30px;
+    cursor: pointer;
 }
 .platformTab li:nth-of-type(3){
     width: 180px;
@@ -305,6 +307,7 @@
 }
 .detail{
     background: url("/views/img/more.png") no-repeat center center;
+    cursor: pointer;
 }
 
 /*分页*/
@@ -364,12 +367,19 @@
     font-size:12px;
     margin-left: 40px;
 }
+.codeList2{
+    cursor: pointer ;
+}
+.back{
+    cursor: pointer;
+}
 .backR{
     width: 48px;
     height: 48px;
     background: #242c36 url(/views/img/zhishang.png) no-repeat center center;
    border-radius:5px;
     margin-right: 20px;
+    cursor: pointer ;
 }
 .mzData{
     background: #fff;
@@ -406,6 +416,7 @@
     margin-top: 9px;
     margin-left: 70px;
     text-align: center;
+    cursor: pointer;
 }
 .query:hover{
     background: #09bade;
@@ -459,6 +470,7 @@
     text-align: center;
     margin-top: 20px;
     border-radius:5px;
+    cursor: pointer;
 }
 .close:hover{
     background: #e9edf0;
@@ -502,6 +514,7 @@
     text-align: center;
     background: #f0f4f7;
     margin-right: 30px;
+    cursor: pointer;
 }
 
 .jyytData{
@@ -510,6 +523,7 @@
 .modular-bg{
      background: #5ca3e6;
      color:#fff;
+    cursor: default;
  }
 .dataTab tr:nth-of-type(n){
     background: #f0f4f7;
@@ -580,6 +594,7 @@
     font-size:16px;
     height:48px;
     text-align: center;
+    background: #f0f4f7;
 }
 .mapTab .more span{
     float:left;
@@ -589,15 +604,18 @@
 .view{
     background: url("/views/img/view.png") no-repeat center center;
     margin-left: 5px;
+    cursor: pointer;
 }
 .address{
     background: url("/views/img/address.png") no-repeat center center;
+    cursor: pointer;
 }
 .backTop{
     display: none;
 }
 .tabList1 .enter{
     background: url(/views/img/enter-h.png)no-repeat center center;
+    cursor: pointer;
 }
 .sendData{
     height: 430px;
