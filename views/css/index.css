@@ -47,6 +47,7 @@
     border-radius:5px;
     background: #2c313d;
     display: none;
+    z-index: 100;
 }
 .quit a{
     display: inline-block;
@@ -269,6 +270,7 @@
 }
 .download a:hover{
     background-color: #3d8fdb;
+    color:#fff;
 }
 .dataList2{
     height: 48px;
@@ -713,4 +715,10 @@
 }
 .toolTab .Trash:hover{
     background-image: url(/views/img/Trash-h.png)
+}
+.tabData tr:nth-of-type(n){
+    background: #fff;
+}
+.tabData tr:nth-of-type(2n){
+    background: #f0f4f7;
 }
