@@ -41,10 +41,9 @@
 .quit{
     position: absolute;
     width: 170px;
-    height: 80px;
+    height: 60px;
     left: 0;
     top:65px;
-    border-radius:5px;
     background: #2c313d;
     display: none;
     z-index: 100;
@@ -58,7 +57,7 @@
     color:#8f8f8f;
 }
 .quit a:hover{
-    background: #fff;
+    color: #fff;
 }
 .platformBtm{
     background: url(/views/img/data-bg.jpg) no-repeat center center;
@@ -133,7 +132,7 @@
     background: rgba(9,197,235,.92);
 }
 .codeTab{
-    width: 240px;
+    width: 200px;
     height: 100px;
     position: absolute;
     right: 0;
@@ -148,12 +147,12 @@
     background: url(/views/img/code.png)no-repeat 0 0 ;
 }
 .codeTab li:nth-of-type(2){
-    padding:15px;
+    padding:10px;
     width: 42px;
     height: 42px;
     float:right;
-    margin-right: 62px;
-    margin-top: 12px;
+    margin-right: 20px;
+    margin-top: 18px;
     background: rgba(92,163,230,.37);
     color:#fff;
     font-size:14px;
@@ -346,7 +345,7 @@
     bottom:90px;
     width: 180px;
     height: 60px;
-    z-index: 2000;
+    z-index: 20000;
 }
 .backTop span{
     float: left;
@@ -363,13 +362,14 @@
     color:#fff;
     text-align: center;
     font-size:12px;
+    margin-left: 40px;
 }
 .backR{
     width: 48px;
     height: 48px;
     background: #242c36 url(/views/img/zhishang.png) no-repeat center center;
    border-radius:5px;
-    margin-right: 60px;
+    margin-right: 20px;
 }
 .mzData{
     background: #fff;
