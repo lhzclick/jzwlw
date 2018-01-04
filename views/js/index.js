@@ -89,6 +89,14 @@ $('.factory').on('click',function(){
     $('.backTop').show();
     $('.scatterWrap').hide();
     $('body,html').animate({scrollTop:scHeight},500);
+});
+
+$(document).on('scroll',function(){
+    if($(document).scrollTop()==0){
+        $('.backTop').hide();
+    }else{
+        $('.backTop').show();
+    }
 })
 
 //点击分布管理
