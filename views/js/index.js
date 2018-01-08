@@ -170,7 +170,7 @@ $('.distribution').on('click',function(){
             polygonTool.open();
     });
     $('.Brush').on('click',function (){
-           handler.close();
+           handler.open();
     });
     $('.Trash').on('click',function (){
         handler.clear();
