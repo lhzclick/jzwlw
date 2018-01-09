@@ -739,4 +739,12 @@ layui.use(['laypage', 'layer'], function(){
                     }
                 });
 });
-
+$('.active1').addClass('active')
+$('.active1').on('click',function(){
+    $(this).addClass('active')
+    $(this).next().removeClass('active')
+})
+$('.portrait').on('click',function(){
+    $(this).addClass('active')
+    $(this).prev().removeClass('active')
+})
