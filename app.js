@@ -50,7 +50,7 @@ function handleError () {
         port:'3306',
         database:'loushanyunwebsite'
     });*/
-   /* connection = mysql.createConnection({
+    connection = mysql.createConnection({
         host:'localhost',
         user:'root',
         password:'root',
@@ -65,7 +65,7 @@ function handleError () {
         }else{
             console.log("mysql已连接")
         }
-    })*/;
+    });
     connection.on('error', function (err) {
         console.log('db error', err);
         // 如果是连接断开，自动重新连接
