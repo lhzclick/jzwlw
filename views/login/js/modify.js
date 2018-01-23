@@ -17,7 +17,7 @@ $('.phoneLi').on('blur input',function(){
                 url:'/findTel',
                 type:'post',
                 data:{
-                  tel:$('.phoneLi').val()
+                    tel:$('.phoneLi').val()
                 },
                 success:function(data){
                     if(data=="true"){
@@ -93,7 +93,7 @@ $('.next').on('click',function(){
 });
 
 //初始密码正则验证
-    $('.passwordInp').on('blur',function(){
+$('.passwordInp').on('blur',function(){
     var mobile = $('.passwordInp').val()
     if(!mobile){
         $(this).next().html("密码不能为空");
