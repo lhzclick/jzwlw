@@ -46,7 +46,7 @@ $('.useInp').on('blur',function(){
 $('.nickName').on('blur',function(){
     var nickNameR = $('.nickName').val()
     if(!nickNameR){
-        $(this).next().html("昵称不能为空");
+        $(this).next().html("公司名不能为空");
     }else{
         $(this).next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
     }
@@ -76,7 +76,7 @@ $('.confirm').on('blur',function(){
     }
 });
 //手机号正则验证
-$('.phoneLi').on('blur input',function(){
+$('.phoneLi').on('blur',function(){
     let _this = $(this)
     var mobile = $('.phoneLi').val()
     if(!mobile){
