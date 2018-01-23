@@ -17,7 +17,6 @@
 }
 .back{
     float:right;
-    width: 170px;
     text-align: center;
     background: url(/views/img/usre-H.png) no-repeat 15px center;
     position: relative;
@@ -30,6 +29,7 @@
 .usreNmae{
     font-size:16px;
     color:#8f8f8f;
+    padding:0 50px;
 }
 .back:hover{
     background-image:url(/views/img/usre-w.png);
