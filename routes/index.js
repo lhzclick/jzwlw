@@ -12,7 +12,7 @@ router.use(session({
 }));
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: req.session.loginName});
+  res.render('index', { title: req.session.nickName});
 });
 
 //同步遍历文件
