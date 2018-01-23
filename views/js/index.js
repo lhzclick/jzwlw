@@ -101,17 +101,17 @@ $(document).on('scroll',function(){
 
 //点击分布管理
 //初始化地图
-var map,lineTool,polygonTool,handler;
+/*var map,lineTool,polygonTool,handler;
 map = new T.Map('mapDiv', {
     attributionControl: false,
     inertia: false
-});
+});*/
 $('.distribution').on('click',function(){
     $('body,html').animate({scrollTop:scHeight},500);
     $('.mapContion').hide();
     $('.scatterWrap').show();
     $('.backTop').show();
-    /*天地图调用*/
+    /*/!*天地图调用*!/
     var zoom = 5;
     var data_info = [[106.840785, 28.212108,"桐梓县模组1"],
         [106.841911, 28.214462,"桐梓县模组2"],
@@ -162,7 +162,7 @@ $('.distribution').on('click',function(){
             opacity:.8
         }
     });
-    /*天地图调用结束*/
+    /!*天地图调用结束*!/
     $('.Line').on('click',function (){
             lineTool.open();
     });
@@ -174,7 +174,98 @@ $('.distribution').on('click',function(){
     });
     $('.Trash').on('click',function (){
         handler.clear();
-    });
+    });*/
+    //模拟数据
+    var data_info = [
+        [106.840785, 28.212108,"桐梓县模组1"],
+        [106.841911, 28.214462,"桐梓县模组2"],
+        [106.841094, 28.215157,"桐梓县模组3"],
+        [106.840927, 28.213243,"桐梓县模组4"],
+        [114.370927, 30.608954,"武汉模组1"],
+        [114.480927, 30.088954,"武汉模组2"],
+        [116.810927, 40.688954,"北京模组1"],
+        [117.000927, 40.668954,"北京模组2"],
+
+    ];
+    var map,zoom=5,lineTool,polygonTool;
+    var markerClusterer,markerclick,marker;
+    //初始化地图对象
+    map = new TMap("mapDiv");
+    //设置显示地图的中心点和级别
+    map.centerAndZoom(new TLngLat(116.40969, 39.89945), zoom);
+    //允许鼠标滚轮缩放地图
+    map.enableHandleMouseScroll();
+    var MAX = 5;
+
+
+    var markers = [];
+    var icon = new TIcon("/views/img/tagging.png",new TSize(20,25),{anchor:new TPixel(20,20)});
+//				new TMarker(new TLngLat(v.longitude, v.latitude), {icon: icon});
+    for(var i = 0; i < data_info.length; i++) {
+        var lnglat = new TLngLat(data_info[i][0],data_info[i][1]);
+        markers.push(new TMarker(lnglat, {icon: icon}));
+        markers[i].indexI = i;
+    }
+
+    var config = {
+        markers: markers,
+    };
+    markerClusterer = new TMarkerClusterer(map, config);
+
+
+    //添加信息框
+    for(var i=0;i<markers.length;i++){
+        markers[i].setTitle(`模组信息:${data_info[markers[i].indexI][2]}`);
+        markerclick = TEvent.addListener(markers[i],"click",function(p){
+            var _this = this;
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.open({
+                    title: '模组信息',
+                    content: data_info[_this.indexI][2],
+                });
+            });
+
+        });
+    }
+    var config1 = {
+        strokeColor:"blue", //折线颜色
+        strokeWeight:"3px", //折线的宽度，以像素为单位
+        strokeOpacity:0.5,  //折线的透明度，取值范围0 - 1
+        strokeStyle:"solid" //折线的样式，solid或dashed
+    };
+    //创建测距工具对象
+    lineTool = new TPolylineTool(map,config1);
+    //注册测距工具绘制完成后的事件
+    TEvent.addListener(lineTool,"draw",onDrawLine);
+    //关闭测距工具
+    function onDrawLine(bounds,line,obj){
+        lineTool.close();
+    }
+    // 测距
+    $('.Line ').on('click',function(){
+        lineTool.open()
+    })
+    var config = {
+        strokeColor:"blue", //折线颜色
+        fillColor:"#FFFFFF",    //填充颜色。当参数为空时，折线覆盖物将没有填充效果
+        strokeWeight:"3px", //折线的宽度，以像素为单位
+        strokeOpacity:0.5,  //折线的透明度，取值范围0 - 1
+        fillOpacity:0.5         //填充的透明度，取值范围0 - 1
+    };
+    //创建测面工具对象
+    polygonTool = new TPolygonTool(map,config);
+    //注册测面工具绘制完成后的事件
+    TEvent.addListener(polygonTool,"draw",onDrawPolygon);
+    //关闭测面工具
+    function onDrawPolygon(bounds,line)
+    {
+        polygonTool.close();
+    }
+    //测面
+    $('.Planimetry ').on('click',function(){
+        polygonTool.open()
+    })
 })
 
 $('.platformTab li').on('click',function () {
