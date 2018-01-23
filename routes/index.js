@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
   res.render('index', { title: req.session.nickName});
 });
 
-//同步遍历文件
+//同 步 遍 历 文 件
 rd.eachSync('./views', function (f, s) {
   if(f.indexOf('.ejs')!=-1){
     let rF = f.split(`\\views\\`)[1].replace(/\\/g, "/");      //正反斜杠转换s
