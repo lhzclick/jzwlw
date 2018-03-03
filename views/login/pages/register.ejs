@@ -11,45 +11,121 @@
     <div class="registerWrap">
         <h2 class="title">基站物联网大数据开发平台</h2>
         <div class="zcxxWrap">
-            <p class="zcxxTop"><span class="usrexx">用户注册信息</span><span class="return"><a href="/login/pages/login">已有账号？立即登录</a></span></p>
-            <ul class="zcxxtab">
+            <!--<p class="zcxxTop"><span class="usrexx">用户注册信息</span><span class="return"><a href="/login/pages/login">已有账号？立即登录</a></span></p>-->
+            <ul class="titleTab">
                 <li>
-                    <span class="usreName">用户名</span>
-                    <input class="loginName useInp" type="text" placeholder="请输入用户名"/>
-                    <span class="prompt"></span>
+                    用户注册信息
+                    <p class="bg_this"></p>
                 </li>
                 <li>
-                    <span class="usreName">公司名称</span>
-                    <input class="nickName" type="text" placeholder="请输入公司名称"/>
-                    <span class="prompt"></span>
+                    公司基本信息
+                    <p class="bg_this"></p>
                 </li>
                 <li>
-                    <span class="usreName">登录密码</span>
-                    <input class="password passwordInp" type="password" placeholder="请输入登录密码"/>
-                    <span class="prompt"></span>
+                    完成
+                    <p class="bg_this"></p>
                 </li>
-                <li>
-                    <span class="usreName">确认密码</span>
-                    <input class="confirm" type="password" placeholder="请再次输入你的登录密码"/>
-                    <span class="prompt"></span>
-                </li>
-                <li>
-                    <span class="usreName">手机号</span>
-                    <input  class="phoneLi tel" type="text" placeholder="请输入手机号"/>
-                    <span class="position">+86</span>
-                    <span class="prompt"></span>
-                </li>
-                <li>
-                    <input class="yzmIpt" type="text" placeholder="请输入验证码"/>
-                    <input class="tamWz" type="button" id="btn" value="获取验证码" />
-                    <span class="prompt"></span>
-                </li>
-                <li><p class="tyxy">同意协议并提交</p></li>
-                <li class="lastLi"><input class="checked allReg" type="checkbox"/>我已同意注册基站物联网大数据平台账号并且同意所有条款<span class="hide">请勾选同意条款</span></li>
             </ul>
+            <div class="plateWrap">
+                <div class="plate plate1">
+                    <ul class="zcxxtab">
+                        <li>
+                            <span class="usreName">用户名</span>
+                            <input class="loginName useInp" type="text" placeholder="请输入用户名"/>
+                            <span class="prompt"></span>
+                        </li>
+                       <!-- <li>
+                            <span class="usreName">公司名称</span>
+                            <input class="nickName" type="text" placeholder="请输入公司名称"/>
+                            <span class="prompt"></span>
+                        </li>-->
+                        <li>
+                            <span class="usreName">登录密码</span>
+                            <input class="password passwordInp" type="password" placeholder="请输入登录密码"/>
+                            <span class="prompt"></span>
+                        </li>
+                        <li>
+                            <span class="usreName">确认密码</span>
+                            <input class="confirm" type="password" placeholder="请再次输入你的登录密码"/>
+                            <span class="prompt"></span>
+                        </li>
+                        <li>
+                            <span class="usreName">手机号</span>
+                            <input  class="phoneLi tel" type="text" placeholder="请输入手机号"/>
+                            <span class="position">+86</span>
+                            <span class="prompt"></span>
+                        </li>
+                        <li>
+                            <input class="yzmIpt" type="text" placeholder="请输入验证码"/>
+                            <input class="tamWz" type="button" id="btn" value="获取验证码" />
+                            <span class="prompt"></span>
+                        </li>
+                        <li><p class="tyxy">同意协议并提交</p></li>
+                        <li class="lastLi"><input class="checked allReg" type="checkbox"/>我已同意注册基站物联网大数据平台账号并且同意所有条款<span class="hide">请勾选同意条款</span></li>
+                    </ul>
+                </div>
+                <div class="plate2 plate" style="display: none">
+                    <ul class="zcxxtab">
+                        <li class="plateLi">
+                            <span class="usreName">公司联系人</span>
+                            <input class="loginName useInp" type="text" placeholder="请输入联系人"/>
+                            <span class="prompt"></span>
+                        </li>
+                        <li class="plateLi">
+                            <span class="usreName">公司电话</span>
+                            <input class="nickName" type="text" placeholder="请输入公司电话"/>
+                            <span class="prompt"></span>
+                        </li>
+                        <li class="plateLi">
+                            <span class="usreName">公司名称</span>
+                            <input class="password passwordInp" type="text" placeholder="请输入登录密码"/>
+                            <span class="prompt"></span>
+                        </li>
+                        <li class="plateLi plateLi1">
+                            <span class="name">地址信息</span>
+                            <div class="gf-select" id="province">
+                                <span><em>请选择省份</em><i class="icon-jt"><input type="hidden" name="province" value=""></i></span>
+                                <ul>
+                                    <li data-value="">请选择省份</li>
+                                </ul>
+                            </div>
+                            <div class="gf-select" id="city">
+                                <span><em>请选择城市</em><i class="icon-jt"><input type="hidden" name="city" value=""></i></span>
+                                <ul>
+                                    <li data-value="">请选择城市</li>
+                                </ul>
+                            </div>
+                            <div class="gf-select" id="area">
+                                <span><em>请选择区县</em><i class="icon-jt"><input type="hidden" name="area" value=""></i></span>
+                                <ul>
+                                    <li data-value="">请选择区县</li>
+                                </ul>
+                            </div>
+                            <input class="more" type="text" placeholder="详细信息"/>
+                        </li>
+                        <li class="yyzz">
+                            <span class="usreName pic">营业执照</span>
+                            <!--<button>上传扫描件</button>
+                            <input class="file" type="text"/>-->
+                            <form action="/addZone" method="post">
+                                <input id="file" type="file" name="logo">
+                                <input type="submit" value="提交">
+                            </form>
+                            <p>图片格式：jpg/png，小于3M</p>
+                        </li>
+                        <li><p class="tyxy1">提交</p></li>
+                    </ul>
+                </div>
+                <div class="plate3 plate" style="display: none">
+                    <p class="success">已完成了账户的注册</p>
+                    <a href="/login/pages/login"><p class="tyxy2">马上去登陆</p></a>
+                </div>
+            </div>
         </div>
+        <p class="zcxxTop"><a href="/login/pages/login">已有账号？<span>立即登录</span></a></p>
     </div>
     <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/views/login/js/cityLink.js"></script>
     <script type="text/javascript" src="/layui/layui.js"></script>
     <script type="text/javascript" src="/views/login/js/register.js"></script>
 </body>
