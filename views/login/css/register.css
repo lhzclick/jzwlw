@@ -201,7 +201,8 @@ a:hover {
     height:140px;
 }
 .plate2 .yyzz{
-    height:140px;
+    height:120px;
+    position: relative;
 }
 .plate2 .yyzz p{
     padding-left:234px;
@@ -280,7 +281,11 @@ form{
     width:480px;
     display: inline-block;
 }
-.pic{
-    position: relative;
-    top:-48px;
+.zcxxtab li .submit{
+    width: 80px;
+    height: 30px;
+    position: absolute;
+    left: 546px;
+    top: 10px;
+    text-align: center;
 }
