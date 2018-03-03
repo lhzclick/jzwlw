@@ -156,10 +156,36 @@ $('.yzmIpt').on('blur',function(){
 
 
 //点击同意按钮
+$('.bg_this').eq(0).show();
+$('.tyxy1').on('click',function(){
+    $('.plate3').show().siblings().hide();
+    $('.bg_this').eq(2).show()
+    $('.bg_this').eq(1).hide()
+    $('.titleTab li').eq(2).css({
+        'background-image':'url(/views/login/img/title3.png)',
+        'color':'#3d8fdb',
+    })
+    $('.titleTab li').eq(1).css({
+        'background-image':'url(/views/login/img/title_h2.png)',
+        'color':'#8f8f8f',
+    })
+})
 $('.tyxy').on('click',function (){
+    //点击同意协议并提交
+    $('.plate2').show().siblings().hide()
+    $('.bg_this').eq(1).show()
+    $('.bg_this').eq(0).hide()
+    $('.titleTab li').eq(1).css({
+        'background-image':'url(/views/login/img/title2.png)',
+        'color':'#3d8fdb',
+    })
+    $('.titleTab li').eq(0).css({
+        'background-image':'url(/views/login/img/title_h1.png)',
+        'color':'#8f8f8f',
+    })
     let [loginName,phoneLi] = [$('.loginName').val(),$('.phoneLi').val()];
     if($('.prompt img').length === 6 && $('.allReg')[0].checked == true){
-        //所有验证通过
+        所有验证通过
         $.ajax({
             url:'/add',
             type:'post',
@@ -178,9 +204,14 @@ $('.tyxy').on('click',function (){
                 })
             }
         })
-    }else{
+   }else{
         layui.use('layer',function(){
             layer.alert("请勾选同意按钮或填写完整信息")
         })
     }
 })
+//选择城市
+$(function(){
+    comSelect();
+    selectCity();
+});
