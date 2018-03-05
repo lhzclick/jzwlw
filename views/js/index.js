@@ -81,13 +81,12 @@ $('.modular').eq(1).on('click',function(){
     $('.modularContain').eq(0).hide()
 })
 /*点击项目名称*/
-var color1 =['rgba(9,145,235,.92)','rgba(9,197,235,.92)']
-var color2 =['rgba(9,145,235,.67)','rgba(9,197,235,.67)']
-var len = color1.length;
+var color1 =['rgba(9,145,235,.92)','rgba(9,197,235,.92)','rgba(245,219,118,.92)','rgba(160,103,235,.92)','rgba(160,103,235,.92)','rgba(9,145,235,.92)','rgba(9,197,235,.92)','rgba(245,219,118,.92)']
+var color2 =['rgba(9,145,235,.67)','rgba(9,197,235,.67)','rgba(245,219,118,.67)','rgba(160,103,235,.67)','rgba(160,103,235,.67)','rgba(9,145,235,.67)','rgba(9,197,235,.67)','rgba(245,219,118,.67)']
+var len3 = color1.length;
 $('.factory').on('click',function(){
-    $('.mapContion').show();
+    $('.mapContion').show().siblings().hide();
     $('.backTop').show();
-    $('.scatterWrap').hide();
     $('body,html').animate({scrollTop:scHeight},500);
 });
 
@@ -108,8 +107,7 @@ map = new T.Map('mapDiv', {
 });*/
 $('.distribution').on('click',function(){
     $('body,html').animate({scrollTop:scHeight},500);
-    $('.mapContion').hide();
-    $('.scatterWrap').show();
+    $('.scatterWrap').show().siblings().hide();
     $('.backTop').show();
     /*/!*天地图调用*!/
     var zoom = 5;
@@ -269,7 +267,7 @@ $('.distribution').on('click',function(){
 })
 
 $('.platformTab li').on('click',function () {
-    for(var i = 0 ; i < len; i++){
+    for(var i = 0 ; i < len3; i++){
         $('.platformTab li').eq(i).css({
             'background':color2[i]
         })
@@ -838,4 +836,49 @@ $('.active1').on('click',function(){
 $('.portrait').on('click',function(){
     $(this).addClass('active')
     $(this).prev().removeClass('active')
+})
+//产品文档模块
+
+//点击物联网端模块
+$('.productTab li').eq(0).css("background-color",'#128be8');
+var len =$('.productTab li').length;
+//点击一级菜单
+$('.productTab li').on('click',function(){
+    for(var i=0;i<len;i++){
+        $('.productTab li').eq(i).css("background-color",'#2c313d')
+        $(this).css("background-color",'#128be8')
+    }
+})
+//点击第三方自定义总线系统
+$('.productTab li').eq(1).on('click',function(event){
+    $('.productTab1').slideDown();
+    event.stopPropagation();
+})
+$('.productTab1').on('click',function(event){
+    event.stopPropagation();
+})
+$(document).on('click',function(){
+    $('.productTab1').slideUp()
+    $('.productTab1 li').css("background-color",'#2c313d');
+})
+//点击二级菜单
+var len1 =$('.productTab1 li').length;
+$('.productTab1 li').on('click',function(){
+    for(var i=0;i<len1;i++){
+        $('.productTab1 li').eq(i).css("background-color",'#2c313d')
+        $(this).css("background-color",'#128be8')
+    }
+})
+//4大模块显示图片
+var len2 =$('.father').length;
+$('.father').on('click',function(){
+    for(var i=0;i<len2;i++){
+        var index = $(this).index('.father');
+    }
+   $('.blockmk').eq(index).show().siblings().hide();
+})
+//点击产品文档
+$('.platformTab li').eq(6).on('click',function(){
+    $('.productWrap').show();
+    $('body,html').animate({scrollTop:scHeight},500);
 })
