@@ -21,10 +21,23 @@ $(document).keydown(function(event){
                 password:$('.password').val()
             },
             success:function(data){
-                if(data){
+                if(data==0){
+                    //res.send("");
+                    layui.use('layer',function(){
+                        layer.alert("账户未审核")
+                    })
+                }data==1){
+                    //res.send("已审核");
                     window.location.href = '/';
+                }data==2){
+                    layui.use('layer',function(){
+                        layer.alert("账户审核未通过")
+                    })
+                    //res.send("未通过");
                 }else{
-                    alert('用户不存在或密码错误')
+                    layui.use('layer',function(){
+                        layer.alert("用户不存在或密码错误")
+                    })
                 }
             }
         })
