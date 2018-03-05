@@ -877,7 +877,7 @@ $('.father').on('click',function(){
     }
    $('.blockmk').eq(index).show().siblings().hide();
 })
-//点击产品文档
+//点击产品文档11
 $('.platformTab li').eq(6).on('click',function(){
     $('.productWrap').show();
     $('body,html').animate({scrollTop:scHeight},500);
