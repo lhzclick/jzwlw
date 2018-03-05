@@ -21,15 +21,15 @@ $(document).keydown(function(event){
                 password:$('.password').val()
             },
             success:function(data){
-                if(data==0){
+                if(data.qualified==0){
                     //res.send("");
                     layui.use('layer',function(){
                         layer.alert("账户未审核")
                     })
-                }else if(data==1){
+                }else if(data.qualified==1){
                     //res.send("已审核");
                     window.location.href = '/';
-                }else if(data==2){
+                }else if(data.qualified==2){
                     layui.use('layer',function(){
                         layer.alert("账户审核未通过")
                     })
@@ -53,11 +53,24 @@ $('.loginWz').on('click',function (){
             password:$('.password').val()
         },
         success:function(data){
-          if(data){
-              window.location.href = '/';
-          }else{
-              alert('用户不存在或密码错误')
-          }
+            if(data.qualified==0){
+                //res.send("");
+                layui.use('layer',function(){
+                    layer.alert("账户未审核")
+                })
+            }else if(data.qualified==1){
+                //res.send("已审核");
+                window.location.href = '/';
+            }else if(data.qualified==2){
+                layui.use('layer',function(){
+                    layer.alert("账户审核未通过")
+                })
+                //res.send("未通过");
+            }else{
+                layui.use('layer',function(){
+                    layer.alert("用户不存在或密码错误")
+                })
+            }
         }
     })
 })
