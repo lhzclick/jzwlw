@@ -12,7 +12,7 @@ router.use(session({
 }));
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: req.session.nickName});
+  res.render('index', { title: req.session.loginName});
 });
 
 //同 步 遍 历 文 件
