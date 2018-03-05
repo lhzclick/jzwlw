@@ -13,7 +13,9 @@ let mysql =require('mysql');
 let session =require('express-session');
 let  http = require('http');
 let  qs = require('querystring');
-
+var fs = require('fs');
+var multer = require('multer');
+var businessLicense;
 
 //后台请求http
 let router = express.Router();
@@ -157,10 +159,32 @@ app.post('/userEx', function (req, res) {
     });
 });
 
+//上传图片
+var storage = multer.diskStorage({
+    //设置上传后文件路径，uploads文件夹会自动创建。
+    destination: function (req, file, cb) {
+        cb(null, 'public/img/')
+    },
+    //给上传文件重命名，获取添加后缀名
+    filename: function (req, file, cb) {
+        cb(null,  file.originalname);
+    }
+});
+var upload = multer({
+    storage: storage
+});
+app.post('/upload', upload.single('logo'), function(req, res, next){
+    res.send({imgSrc:req.host+req.file.path})
+});
+app.get('/register', function(req, res, next){
+    var register = fs.readFileSync('./register.ejs', {encoding: 'utf8'});
+    res.send(register);
+});
+
 //注册 添加用户
 app.post('/add',function (req,res){
     let bodyInfo = req.body;
-    let [loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName] = [bodyInfo.loginName,bodyInfo.password,bodyInfo.tel,bodyInfo.provinceId,bodyInfo.cityId,bodyInfo.countyId,bodyInfo.addressInfo,bodyInfo.contacts,bodyInfo.companyPhone,bodyInfo.companyName];
+    let [loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName,businessLicense] = [bodyInfo.loginName,bodyInfo.password,bodyInfo.tel,bodyInfo.provinceId,bodyInfo.cityId,bodyInfo.countyId,bodyInfo.addressInfo,bodyInfo.contacts,bodyInfo.companyPhone,bodyInfo.companyName,bodyInfo.businessLicense];
     let userGetSql = 'SELECT * FROM productregister';
     connection.query(userGetSql,function(err,result){
         if(err){
@@ -173,7 +197,7 @@ app.post('/add',function (req,res){
                 }
             });
             if(!isLogin){
-                connection.query("insert into productregister(loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName) values('"+loginName+"','"+ password +"','"+tel+"','"+ provinceId +"','"+ cityId +"','"+ countyId +"','"+ addressInfo +"','"+ contacts +"','"+ companyPhone +"','"+ companyName +"')",function(err,rows){
+                connection.query("insert into productregister(loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName,businessLicense) values('"+loginName+"','"+ password +"','"+tel+"','"+ provinceId +"','"+ cityId +"','"+ countyId +"','"+ addressInfo +"','"+ contacts +"','"+ companyPhone +"','"+ companyName +"','"+ businessLicense +"')",function(err,rows){
                     if(err){
                         res.send("新增失败"+err);
                     }else {
@@ -281,6 +305,9 @@ app.post('/findLogin',function (req,res){
         }
     });
 });
+
+
+
 /*---------------------404----------------------------*/
 
 // catch 404 and forwarding to error handler
