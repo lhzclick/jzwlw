@@ -184,7 +184,7 @@ app.get('/register', function(req, res, next){
 //注册 添加用户
 app.post('/add',function (req,res){
     let bodyInfo = req.body;
-    let [loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName] = [bodyInfo.loginName,bodyInfo.password,bodyInfo.tel,bodyInfo.provinceId,bodyInfo.cityId,bodyInfo.countyId,bodyInfo.addressInfo,bodyInfo.contacts,bodyInfo.companyPhone,bodyInfo.companyName];
+    let [loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName,businessLicense] = [bodyInfo.loginName,bodyInfo.password,bodyInfo.tel,bodyInfo.provinceId,bodyInfo.cityId,bodyInfo.countyId,bodyInfo.addressInfo,bodyInfo.contacts,bodyInfo.companyPhone,bodyInfo.companyName,bodyInfo.businessLicense];
     let userGetSql = 'SELECT * FROM productregister';
     connection.query(userGetSql,function(err,result){
         if(err){
@@ -197,7 +197,7 @@ app.post('/add',function (req,res){
                 }
             });
             if(!isLogin){
-                connection.query("insert into productregister(loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName) values('"+loginName+"','"+ password +"','"+tel+"','"+ provinceId +"','"+ cityId +"','"+ countyId +"','"+ addressInfo +"','"+ contacts +"','"+ companyPhone +"','"+ companyName +"')",function(err,rows){
+                connection.query("insert into productregister(loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName,businessLicense) values('"+loginName+"','"+ password +"','"+tel+"','"+ provinceId +"','"+ cityId +"','"+ countyId +"','"+ addressInfo +"','"+ contacts +"','"+ companyPhone +"','"+ companyName +"','"+ businessLicense +"')",function(err,rows){
                     if(err){
                         res.send("新增失败"+err);
                     }else {
