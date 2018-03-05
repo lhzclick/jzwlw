@@ -103,6 +103,41 @@ $('.phoneLi').on('blur',function(){
     }
 });
 
+//公司联系人正则验证
+$('.contacts').on('blur',function(){
+    var contacts = $('.contacts').val()
+    if(!contacts){
+        $(this).next().html("公司联系人不能为空");
+    }else{
+        $(this).next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+    }
+});
+
+//公司电话正则验证
+$('.companyPhone').on('blur',function(){
+    var companyPhone = $('.companyPhone').val();
+    if(!companyPhone){
+        $(this).next().html("公司电话不能为空");
+    }else{
+        if(!(/^1[0-9]{10}$/.test(companyPhone))){
+            $(this).next().html("请输入正确的公司电话");
+        }else{
+            $(this).next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+        }
+    }
+});
+
+//公司名称正则验证
+$('.companyName').on('blur',function(){
+    var companyName = $('.companyName').val()
+    if(!companyName){
+        $(this).next().html("公司联系人不能为空");
+    }else{
+        $(this).next().html(`<img class="okReg" src="/views/login/img/Ok.png">`);
+    }
+});
+
+
 //倒计时函数
 var wait=60;
 function time(o) {
@@ -153,39 +188,10 @@ $('.yzmIpt').on('blur',function(){
         $(this).next().next().html("请输入正确的验证码");
     }
 });
-
-
 //点击同意按钮
 $('.bg_this').eq(0).show();
 $('.tyxy1').on('click',function(){
-    $('.plate3').show().siblings().hide();
-    $('.bg_this').eq(2).show()
-    $('.bg_this').eq(1).hide()
-    $('.titleTab li').eq(2).css({
-        'background-image':'url(/views/login/img/title3.png)',
-        'color':'#3d8fdb',
-    })
-    $('.titleTab li').eq(1).css({
-        'background-image':'url(/views/login/img/title_h2.png)',
-        'color':'#8f8f8f',
-    })
-})
-$('.tyxy').on('click',function (){
-    //点击同意协议并提交
-    $('.plate2').show().siblings().hide()
-    $('.bg_this').eq(1).show()
-    $('.bg_this').eq(0).hide()
-    $('.titleTab li').eq(1).css({
-        'background-image':'url(/views/login/img/title2.png)',
-        'color':'#3d8fdb',
-    })
-    $('.titleTab li').eq(0).css({
-        'background-image':'url(/views/login/img/title_h1.png)',
-        'color':'#8f8f8f',
-    })
-    let [loginName,phoneLi] = [$('.loginName').val(),$('.phoneLi').val()];
-    if($('.prompt img').length === 6 && $('.allReg')[0].checked == true){
-        所有验证通过
+    if($('.prompt img').length === 8 && $('.allReg')[0].checked == true){
         $.ajax({
             url:'/add',
             type:'post',
@@ -193,16 +199,56 @@ $('.tyxy').on('click',function (){
                 loginName:$('.loginName').val(),
                 nickName:$('.nickName').val(),
                 password:$('.password').val(),
-                tel:$('.tel').val()
+                tel:$('.tel').val(),
+                provinceId:$('.provinceId').html(),
+                cityId:$('.cityId').html(),
+                countyId:$('.countyId').html(),
+                addressInfo:$('.addressInfo').val(),
+                contacts:$('.contacts').val(),
+                companyPhone:$('.companyPhone').val(),
+                companyName:$('.companyName').val()
             },
             success:function (data){
                 layui.use('layer',function(){
+                    //setInterval(function(){
+                    //    window.location.href="/login/pages/login";
+                    //},1000)
+                    $('.plate3').show().siblings().hide();
+                    $('.bg_this').eq(2).show()
+                    $('.bg_this').eq(1).hide()
+                    $('.titleTab li').eq(2).css({
+                        'background-image':'url(/views/login/img/title3.png)',
+                        'color':'#3d8fdb',
+                    })
+                    $('.titleTab li').eq(1).css({
+                        'background-image':'url(/views/login/img/title_h2.png)',
+                        'color':'#8f8f8f',
+                    });
                     layer.alert(data);
-                    setInterval(function(){
-                        window.location.href="/login/pages/login";
-                    },1000)
                 })
             }
+        })
+
+    }else{
+        layui.use('layer',function(){
+            layer.alert("请填写完整信息")
+        })
+    }
+})
+$('.tyxy').on('click',function (){
+    let [loginName,phoneLi] = [$('.loginName').val(),$('.phoneLi').val()];
+    if($('.prompt img').length === 5 && $('.allReg')[0].checked == true){
+        //第一页所有验证通过
+        $('.plate2').show().siblings().hide()
+        $('.bg_this').eq(1).show()
+        $('.bg_this').eq(0).hide()
+        $('.titleTab li').eq(1).css({
+            'background-image':'url(/views/login/img/title2.png)',
+            'color':'#3d8fdb',
+        })
+        $('.titleTab li').eq(0).css({
+            'background-image':'url(/views/login/img/title_h1.png)',
+            'color':'#8f8f8f',
         })
    }else{
         layui.use('layer',function(){
