@@ -119,7 +119,7 @@ app.post('/info', function (req, res) {
                 req.session.loginName = result[sucOn].loginName;
                 req.session.password = result[sucOn].password;
                 req.session.tel = result[sucOn].tel;
-                res.send(true);
+                res.send(result[sucOn].qualified);
             }else{
                 res.send(false);
             }
