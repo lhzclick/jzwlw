@@ -2,6 +2,7 @@
  * Created by liuh on 2017/12/12.
  */
 var on = true;
+var imgSrc;
 let shortM;
 $('.checked').on('click',function(){
 
@@ -206,7 +207,8 @@ $('.tyxy1').on('click',function(){
                 addressInfo:$('.addressInfo').val(),
                 contacts:$('.contacts').val(),
                 companyPhone:$('.companyPhone').val(),
-                companyName:$('.companyName').val()
+                companyName:$('.companyName').val(),
+                businessLicense:imgsrc
             },
             success:function (data){
                 layui.use('layer',function(){
@@ -255,6 +257,15 @@ $('.tyxy').on('click',function (){
             layer.alert("请勾选同意按钮或填写完整信息")
         })
     }
+});
+$('.submit').on('click',function(){
+    $('#upImg').ajaxSubmit(function(data) {
+        //alert(data.imgSt)
+        layui.use('layer',function() {
+            layer.alert("上传成功");
+        });
+        imgSrc = data.imgSrc;
+    });
 })
 //选择城市
 $(function(){
