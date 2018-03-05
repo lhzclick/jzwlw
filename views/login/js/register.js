@@ -208,7 +208,7 @@ $('.tyxy1').on('click',function(){
                 contacts:$('.contacts').val(),
                 companyPhone:$('.companyPhone').val(),
                 companyName:$('.companyName').val(),
-                businessLicense:imgsrc
+                businessLicense:imgSrc
             },
             success:function (data){
                 layui.use('layer',function(){
