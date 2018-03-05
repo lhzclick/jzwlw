@@ -68,40 +68,40 @@
                     <ul class="zcxxtab">
                         <li class="plateLi">
                             <span class="usreName">公司联系人</span>
-                            <input class="loginName useInp" type="text" placeholder="请输入联系人"/>
+                            <input class="contacts" type="text" placeholder="请输入联系人"/>
                             <span class="prompt"></span>
                         </li>
                         <li class="plateLi">
                             <span class="usreName">公司电话</span>
-                            <input class="nickName" type="text" placeholder="请输入公司电话"/>
+                            <input class="companyPhone" type="text" placeholder="请输入公司电话"/>
                             <span class="prompt"></span>
                         </li>
                         <li class="plateLi">
                             <span class="usreName">公司名称</span>
-                            <input class="password passwordInp" type="text" placeholder="请输入登录密码"/>
+                            <input class="companyName" type="text" placeholder="请输入公司名称"/>
                             <span class="prompt"></span>
                         </li>
                         <li class="plateLi plateLi1">
                             <span class="name">地址信息</span>
                             <div class="gf-select" id="province">
-                                <span><em>请选择省份</em><i class="icon-jt"><input type="hidden" name="province" value=""></i></span>
+                                <span><em class="provinceId">请选择省份</em><i class="icon-jt"><input type="hidden" name="province" value=""></i></span>
                                 <ul>
                                     <li data-value="">请选择省份</li>
                                 </ul>
                             </div>
                             <div class="gf-select" id="city">
-                                <span><em>请选择城市</em><i class="icon-jt"><input type="hidden" name="city" value=""></i></span>
+                                <span><em class="cityId">请选择城市</em><i class="icon-jt"><input type="hidden" name="city" value=""></i></span>
                                 <ul>
                                     <li data-value="">请选择城市</li>
                                 </ul>
                             </div>
                             <div class="gf-select" id="area">
-                                <span><em>请选择区县</em><i class="icon-jt"><input type="hidden" name="area" value=""></i></span>
+                                <span><em class="countyId">请选择区县</em><i class="icon-jt"><input type="hidden" name="area" value=""></i></span>
                                 <ul>
                                     <li data-value="">请选择区县</li>
                                 </ul>
                             </div>
-                            <input class="more" type="text" placeholder="详细信息"/>
+                            <input class="more addressInfo" type="text" placeholder="详细信息"/>
                         </li>
                         <li class="yyzz">
                             <span class="usreName pic">营业执照</span>
@@ -116,6 +116,8 @@
                         <li><p class="tyxy1">提交</p></li>
                     </ul>
                 </div>
+
+
                 <div class="plate3 plate" style="display: none">
                     <p class="success">已完成了账户的注册</p>
                     <a href="/login/pages/login"><p class="tyxy2">马上去登陆</p></a>
