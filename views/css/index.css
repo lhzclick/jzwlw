@@ -778,3 +778,94 @@
     background: #09c5eb;
     color:#fff;
 }
+/**********************************product*********************/
+.productHead{
+    width: 100%;
+    height:442px;
+    background: url("/views/img/productHead.gif") no-repeat center center;
+}
+.productWater{
+    background: #141213;
+    padding-bottom:52px;
+}
+.productWater p{
+    line-height: 96px;
+    font-size:24px;
+    text-align: center;
+}
+.productTab{
+    width: 840px;
+    margin: auto;
+}
+.productTab li{
+    width: 260px;
+    margin-right: 20px;
+    line-height: 128px;
+    text-align: center;
+    color: #fff;
+    font-size:18px;
+    border-radius: 5px;
+    float: left;
+}
+.productTab li:nth-of-type(1){
+    background:#2c313d url(/views/img/circular.png) no-repeat center 80px;
+}
+.productTab li:nth-of-type(2){
+    background:#2c313d url(/views/img/triangle.png) no-repeat center 80px;
+}
+.productTab li:nth-of-type(3){
+    background:#2c313d url(/views/img/polygon.png) no-repeat center 80px;
+}
+.wlwdmk,.wlwwxtymk,.zdyzxmk,.swwlwydd{
+    width: 1200px;
+    height: 926px;
+    margin: auto;
+    position: relative;
+    top:-2px;
+    background:url(/views/img/wlwdmk.jpg) no-repeat center center ;
+}
+.wlwwxtymk{
+    background-image: url(/views/img/wlwwxtymk.jpg);
+    display: none;
+}
+.zdyzxmk{
+    background-image: url(/views/img/zdyzxmk.jpg);
+    display: none;
+}
+.swwlwydd{
+    background-image: url(/views/img/swwlwydd.jpg);
+    display: none;
+}
+.productTab .bg_color{
+    background-color: #128be8;
+}
+.productTab{
+    height: 128px;
+}
+.productTab1{
+    width: 480px;
+    height: 100px;
+    margin:auto;
+    padding-top:20px;
+    display: none;
+}
+.productTab1 li{
+    float: left;
+    width: 220px;
+    height: 100px;
+    border-radius:5px;
+    line-height: 100px;
+    text-align: center;
+    font-size:16px;
+    color:#fff;
+    margin-right: 20px;
+}
+.productTab1 li:nth-of-type(1){
+    background:#2c313d url(/views/img/triangle.png) no-repeat center 65px;
+}
+.productTab1 li:nth-of-type(2){
+    background:#2c313d url(/views/img/triangle.png) no-repeat center 65px;
+}
+.platformTab .product:hover{
+    background:rgba(9, 197, 235, 0.92);
+}
