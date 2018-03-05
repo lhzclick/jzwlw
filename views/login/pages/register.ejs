@@ -107,9 +107,9 @@
                             <span class="usreName pic">营业执照</span>
                             <!--<button>上传扫描件</button>
                             <input class="file" type="text"/>-->
-                            <form action="/addZone" method="post">
+                            <form id="upImg" onsubmit="return false" action="/upload" method="post"  enctype="multipart/form-data">
                                 <input id="file" type="file" name="logo">
-                                <button class="submit" >提交</button>
+                                <input type="submit" class="submit"  value="提交">
                             </form>
                             <p>图片格式：jpg/png，小于3M</p>
                         </li>
@@ -120,13 +120,14 @@
 
                 <div class="plate3 plate" style="display: none">
                     <p class="success">已完成了账户的注册</p>
-                    <a href="/login/pages/login"><p class="tyxy2">马上去登陆</p></a>
+                    <a href="/login/pages/login"><p class="tyxy2">申请成功，等待审核</p></a>
                 </div>
             </div>
         </div>
         <p class="zcxxTop"><a href="/login/pages/login">已有账号？<span>立即登录</span></a></p>
     </div>
     <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/jqForm.js"></script>
     <script type="text/javascript" src="/views/login/js/cityLink.js"></script>
     <script type="text/javascript" src="/layui/layui.js"></script>
     <script type="text/javascript" src="/views/login/js/register.js"></script>
