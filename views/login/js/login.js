@@ -26,10 +26,10 @@ $(document).keydown(function(event){
                     layui.use('layer',function(){
                         layer.alert("账户未审核")
                     })
-                }data==1){
+                }else if(data==1){
                     //res.send("已审核");
                     window.location.href = '/';
-                }data==2){
+                }else if(data==2){
                     layui.use('layer',function(){
                         layer.alert("账户审核未通过")
                     })
