@@ -96,7 +96,7 @@ app.use(session({
 //查询 登陆验证 写入session
 app.post('/info', function (req, res) {
     let bodyInfo = req.body;
-    let userGetSql = 'SELECT * FROM userInfo';
+    let userGetSql = 'SELECT * FROM productregister';
     connection.query(userGetSql,function(err,result){
         if(err){
             console.log('查询错误')
@@ -118,7 +118,6 @@ app.post('/info', function (req, res) {
             if(sucOn!=-1){
                 req.session.loginName = result[sucOn].loginName;
                 req.session.password = result[sucOn].password;
-                req.session.nickName = result[sucOn].nickName;
                 req.session.tel = result[sucOn].tel;
                 res.send(true);
             }else{
@@ -131,7 +130,7 @@ app.post('/info', function (req, res) {
 
 //查询 读取session
 app.post('/userEx', function (req, res) {
-    let userGetSql = 'SELECT * FROM userInfo';
+    let userGetSql = 'SELECT * FROM productregister';
     connection.query(userGetSql,function(err,result){
         if(err){
             console.log('查询错误')
@@ -161,8 +160,8 @@ app.post('/userEx', function (req, res) {
 //注册 添加用户
 app.post('/add',function (req,res){
     let bodyInfo = req.body;
-    let [loginName,password,tel,nickName] = [bodyInfo.loginName,bodyInfo.password,bodyInfo.tel,bodyInfo.nickName];
-    let userGetSql = 'SELECT * FROM userInfo';
+    let [loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName] = [bodyInfo.loginName,bodyInfo.password,bodyInfo.tel,bodyInfo.provinceId,bodyInfo.cityId,bodyInfo.countyId,bodyInfo.addressInfo,bodyInfo.contacts,bodyInfo.companyPhone,bodyInfo.companyName];
+    let userGetSql = 'SELECT * FROM productregister';
     connection.query(userGetSql,function(err,result){
         if(err){
             console.log('查询错误')
@@ -174,7 +173,7 @@ app.post('/add',function (req,res){
                 }
             });
             if(!isLogin){
-                connection.query("insert into userInfo(loginName,password,tel,nickName) values('"+loginName+"','"+ password +"','"+tel+"','"+ nickName +"')",function(err,rows){
+                connection.query("insert into productregister(loginName,password,tel,provinceId,cityId,countyId,addressInfo,contacts,companyPhone,companyName) values('"+loginName+"','"+ password +"','"+tel+"','"+ provinceId +"','"+ cityId +"','"+ countyId +"','"+ addressInfo +"','"+ contacts +"','"+ companyPhone +"','"+ companyName +"')",function(err,rows){
                     if(err){
                         res.send("新增失败"+err);
                     }else {
@@ -224,7 +223,7 @@ app.post('/message', function(req, res){
 app.post('/update',function (req,res){
     let querys = req.body;
     let [tel,password] =  [querys.tel,querys.password];
-    var update = `update userInfo set password ="${password}"  where tel ="${tel}"`;
+    var update = `update productregister set password ="${password}"  where tel ="${tel}"`;
     //var sql = "update user set age = '"+ age +"',sex = '"+ sex +"',password = '"+ password +"' where user = " + user;
     connection.query(update,function(err,rows){
         if(err){
@@ -239,7 +238,7 @@ app.post('/update',function (req,res){
 app.post('/findTel',function (req,res){
     let bodyInfo = req.body;
     let tel= bodyInfo.tel;
-    let userGetSql = 'SELECT tel FROM userInfo';
+    let userGetSql = 'SELECT tel FROM productregister';
     connection.query(userGetSql,function(err,result){
         if(err){
             console.log('查询错误')
@@ -263,7 +262,7 @@ app.post('/findTel',function (req,res){
 app.post('/findLogin',function (req,res){
     let bodyInfo = req.body;
     let loginName= bodyInfo.loginName;
-    let userGetSql = 'SELECT loginName FROM userInfo';
+    let userGetSql = 'SELECT loginName FROM productregister';
     connection.query(userGetSql,function(err,result){
         if(err){
             console.log('查询错误')
@@ -282,9 +281,6 @@ app.post('/findLogin',function (req,res){
         }
     });
 });
-
-
-
 /*---------------------404----------------------------*/
 
 // catch 404 and forwarding to error handler
@@ -316,6 +312,4 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-
 module.exports = app;
