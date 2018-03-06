@@ -239,7 +239,7 @@ $('.tyxy1').on('click',function(){
 })
 $('.tyxy').on('click',function (){
     let [loginName,phoneLi] = [$('.loginName').val(),$('.phoneLi').val()];
-    if($('.prompt img').length === 5 && $('.allReg')[0].checked == true){
+    if($('.prompt img').length === 0 && $('.allReg')[0].checked == false){
         //第一页所有验证通过
         $('.plate2').show().siblings().hide()
         $('.bg_this').eq(1).show()
@@ -264,7 +264,7 @@ $('.submit').on('click',function(){
         layui.use('layer',function() {
             layer.alert("上传成功");
         });
-        imgSrc = data.imgSrc;
+        imgSrc = data.imgSrc.replace(/\\/g,'/').replace(/\/public\//,'/');
     });
 })
 //选择城市
