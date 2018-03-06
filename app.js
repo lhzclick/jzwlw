@@ -174,7 +174,7 @@ var upload = multer({
     storage: storage
 });
 app.post('/upload', upload.single('logo'), function(req, res, next){
-    res.send({imgSrc:req.host+req.file.path})
+    res.send({imgSrc:req.host + ':3000/' + req.file.path})
 });
 app.get('/register', function(req, res, next){
     var register = fs.readFileSync('./register.ejs', {encoding: 'utf8'});
