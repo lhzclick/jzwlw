@@ -879,6 +879,6 @@ $('.father').on('click',function(){
 })
 //点击产品文档
 $('.platformTab li').eq(6).on('click',function(){
-    $('.productWrap').show();
+    $('.productWrap').show().siblings().hide();
     $('body,html').animate({scrollTop:scHeight},500);
 })
