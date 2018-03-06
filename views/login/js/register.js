@@ -239,7 +239,7 @@ $('.tyxy1').on('click',function(){
 })
 $('.tyxy').on('click',function (){
     let [loginName,phoneLi] = [$('.loginName').val(),$('.phoneLi').val()];
-    if($('.prompt img').length === 0 && $('.allReg')[0].checked == false){
+    if($('.prompt img').length === 5 && $('.allReg')[0].checked == true){
         //第一页所有验证通过
         $('.plate2').show().siblings().hide()
         $('.bg_this').eq(1).show()
