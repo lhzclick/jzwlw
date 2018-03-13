@@ -204,7 +204,6 @@ $('.distribution').on('click',function(){
         markers.push(new TMarker(lnglat, {icon: icon}));
         markers[i].indexI = i;
     }
-
     var config = {
         markers: markers,
     };
@@ -880,5 +879,253 @@ $('.father').on('click',function(){
 //点击产品文档
 $('.platformTab li').eq(6).on('click',function(){
     $('.productWrap').show().siblings().hide();
+    $('body,html').animate({scrollTop:scHeight},500);
+})
+//点击账户资料
+$('.quit li').eq(0).on('click',function(){
+    $(this).css('color','#fff')
+    var information =`
+    <div>
+        <ul class="informationTab">
+            <li><span class="left">用户名</span><span class="right">酸菜一撇</span></li>
+            <li><span class="left">公司联系人</span><span class="right">冰风谷</span></li>
+            <li><span class="left">公司电话</span><span class="right">13129986283</span></li>
+            <li><span class="left">公司名称</span><span class="right">武汉易维科技有限公司</span></li>
+            <li>
+                <span class="left name">地址信息</span>
+                <div class="gf-select" id="province">
+                    <span><em class="provinceId">请选择省份</em><i class="icon-jt"><input type="hidden" name="province" value=""></i></span>
+                    <ul>
+                         <li data-value="">请选择省份</li>
+                    </ul>
+                </div>
+                <div class="gf-select" id="city">
+                     <span><em class="cityId">请选择城市</em><i class="icon-jt"><input type="hidden" name="city" value=""></i></span>
+                    <ul>
+                        <li data-value="">请选择城市</li>
+                    </ul>
+                </div>
+                <div class="gf-select" id="area">
+                    <span><em class="countyId">请选择区县</em><i class="icon-jt"><input type="hidden" name="area" value=""></i></span>
+                    <ul>
+                         <li data-value="">请选择区县</li>
+                    </ul>
+                </div>
+            </li>
+            <li><span class="left"></span><span class="right">新华路鑫诚国际聚福苑3栋1204</span></li>
+            <li><span class="left">厂家标识</span><span class="right">111111111111</span></li>
+        </ul>
+        <span class="close" style="margin-top:10px;">关闭</span>
+      </div>
+    `
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        var index=layer.open({
+            type: 1,
+            title: ['账户资料', 'font-size:18px;color:#fff;text-align:center;background:#2c313d'],
+            area: ['1000px', '570px'],
+            content: information
+        });
+        $('.close').on('click',function(){
+            layer.close(index)
+        })
+        //选择城市
+        $(function(){
+            comSelect();
+            selectCity();
+        });
+    });
+})
+//鼠标移入APP
+var lenLi =$('.codeTab li').length
+$('.codeTab li').mouseover(function(){
+    for(var i=0;i<lenLi;i++){
+        var indexW =$(this).index()
+        $('.codePic').hide()
+        $('.codePic').eq(indexW).show()
+    }
+})
+$('.codeTab li').mouseout(function(){
+    for(var i=0;i<lenLi;i++){
+        var indexH =$(this).index()
+        $('.codePic').hide()
+        $('.codePic').eq(indexH).hide();
+    }
+})
+//点击通用模组和家用一体式模组
+$('.trackCurr').addClass('track_bg');
+$('.trackCurr').on('click',function(){
+    $(this).addClass('track_bg');
+    $(this).next().removeClass('track_bg');
+    $('.hide').hide()
+    $('.show').show()
+})
+$('.trackHouse').on('click',function(){
+    $(this).addClass('track_bg');
+    $(this).prev().removeClass('track_bg');
+    $('.hide').show()
+    $('.show').hide()
+})
+$('.trackTitle').mouseover(function(){
+    $('.trackTabW').slideDown()
+})
+
+$(document).on('click',function(){
+    $('.trackTabW').slideUp()
+})
+//售后服务天地图调用
+var map,zoom=5;
+//初始化地图对象
+map = new TMap("trackMap");
+//设置显示地图的中心点和级别
+map.centerAndZoom(new TLngLat(116.40969, 39.89945), zoom);
+//允许鼠标滚轮缩放地图
+map.enableHandleMouseScroll();
+//模拟数据
+var data_info1 = [
+    [106.840785, 28.212108],
+    [106.841911, 28.214462],
+    [106.841094, 28.215157],
+    [106.840927, 28.213243],
+    [114.370927, 30.608954],
+    [114.480927, 30.088954],
+    [116.810927, 40.688954],
+    [117.000927, 40.668954],
+
+];
+var markerClusterer1,markerclick1,marker1;
+var markers = [];
+var icon1 = new TIcon("/views/img/tagging.png",new TSize(20,25),{anchor:new TPixel(20,20)});
+//				new TMarker(new TLngLat(v.longitude, v.latitude), {icon: icon});
+for(var i = 0; i < data_info1.length; i++) {
+    var lnglat1 = new TLngLat(data_info1[i][0],data_info1[i][1]);
+    markers.push(new TMarker(lnglat1, {icon: icon1}));
+    markers[i].indexI = i;
+}
+var config1 = {
+    markers: markers,
+};
+markerClusterer1 = new TMarkerClusterer(map, config1);
+
+
+//点击地图中的标识
+for(var i=0;i<markers.length;i++){
+    markerclick1 = TEvent.addListener(markers[i],"click",function(p){
+        $('.trackList').show();
+        $('body,html').animate({scrollTop:scHeight},1000);
+    });
+}
+//点击售后跟踪的详情
+$('.trackMore').on('click',function(){
+    var trackData =`
+    <div class="trackMoreWrap">
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <th>产品形式</th>
+                <th>原物联SN</th>
+                <th>出厂时间</th>
+                <th>新物联SN</th>
+                <th>变更时间</th>
+                <th>变更次数</th>
+                <th>出厂设置信息</th>
+            </tr>
+        </thead>
+            <tr>
+                <td>远传表号接入</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>1</td>
+                <td class="trackMore1"></td>
+            </tr>
+            <tr>
+                <td>远传表号接入</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>2</td>
+                <td class="trackMore1"></td>
+            </tr>
+            <tr>
+                <td>远传表号接入</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>3</td>
+                <td class="trackMore1"></td>
+            </tr>
+            <tr>
+                <td>远传表号接入</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>4</td>
+                <td class="trackMore1"></td>
+            </tr>
+            <tr>
+                <td>远传表号接入</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>01561117c6ca0ebf6846</td>
+                <td>2017-12-6</td>
+                <td>5</td>
+                <td class="trackMore1"></td>
+            </tr>
+        </table>
+            <div class="trackData">
+                <p class='trackDataP'>出产设置信息</p>
+                <ul class="trackDatatab clear">
+                    <li>物联SN：01561117c6ca0ebf6846</li>
+                    <li>使用类型：基站工业用</li>
+                    <li>工作模式：从机模式</li>
+                    <li>无线频率：470MHz</li>
+                    <li>发送频率：24小时</li>
+                    <li>发送功率：------</li>
+                    <li>网络交互：不带网络反馈</li>
+                    <li>出厂时间：2018-3-3</li>
+                    <li>软件版本号：1.0</li>
+                    <li>硬件版本号：1.0</li>
+                </ul>
+                <ul class="trackDatatab1 clear">
+                    <li>传感信号：双EV  </li>
+                    <li>物联电池：正常 </li>
+                    <li>强磁：有</li>
+                    <li>拆卸：有</li>
+                    <li>倒流：空 </li>
+                    <li>传感器故障：空</li>
+                    <li>阀门状态：空</li>
+                    <li>表号：0</li>
+                    <li>设备ID：1215684715794571848  </li>
+                    <li>脉冲值：154614815</li>
+                    <li>倍率(m³)/脉冲常数：0.001/1000</li>
+                </ul>
+            </div>
+            <span class='close'>关闭</span>
+       </div>
+    `
+    layui.use('layer', function(){
+        var layer = layui.layer;
+       var index= layer.open({
+            type: 1,
+            title: ['变更历史数据信息', 'font-size:18px;color:#fff;text-align:center;background:#2c313d'],
+            area: ['1100px', '680px'],
+            content:trackData,
+        });
+        $('.close').on('click',function(){
+            layer.close(index)
+        })
+        $('.trackMore1').on('click',function(){
+            $('.trackMore1').css('background-image','url(/views/img/more1_h.png)')
+            $(this).css('background-image','url(/views/img/more1.png)')
+        })
+    });
+})
+$('.platformTab li').eq(3).on('click',function(){
+    $('.trackWrap').show().siblings().hide();
     $('body,html').animate({scrollTop:scHeight},500);
 })
