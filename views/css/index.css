@@ -40,21 +40,27 @@
 }
 .quit{
     position: absolute;
-    width: 170px;
-    height: 60px;
+    width: 140px;
     left: 0;
     top:65px;
     background: #2c313d;
     display: none;
     z-index: 100;
 }
+.quit li{
+    text-indent: 20px;
+    text-align:left;
+    line-height: 48px;
+}
 .quit a{
     display: inline-block;
-    width: 150px;
-    line-height: 30px;
-    text-align: left;
-    padding-left: 20px;
+    width: 120px;
     color:#8f8f8f;
+    position: relative;
+    right: 20px;
+}
+.quit li:hover{
+    color: #fff;
 }
 .quit a:hover{
     color: #fff;
@@ -133,14 +139,14 @@
 .platformTab .distribution:hover{
     background: rgba(9,197,235,.92);
 }
-.codeTab{
+/*.codeTab{
     width: 200px;
     height: 100px;
     position: absolute;
     right: 0;
     top: 50%;
-}
-.codeTab li{
+}*/
+/*.codeTab li{
     float:left;
 }
 .codeTab li:nth-of-type(1){
@@ -159,7 +165,7 @@
     color:#fff;
     font-size:14px;
     text-indent:8px ;
-}
+}*/
 .platformMap{
     overflow: hidden;
     background: #141213;
@@ -868,4 +874,295 @@
 }
 .platformTab .product:hover{
     background:rgba(9, 197, 235, 0.92);
+}
+/***********************************************账户资料弹框****************************************/
+.informationTab span{
+    float: left;
+    font-size: 16px;
+    color:#525252;
+    line-height:36px;
+    height:36px;
+}
+.informationTab{
+    padding:30px 0;
+    border-bottom:1px solid #e9edf0;
+}
+.informationTab li{
+    height:38px;
+    padding:10px 0;
+}
+.informationTab .left{
+    width: 220px;
+    margin-right: 10px;
+    text-align: right;
+}
+.informationTab .right{
+    width: 640px;
+    margin-right: 10px;
+    height: 36px;
+    border: 1px solid #e9edf0;
+    background:#f0f4f7;
+    text-indent: 30px;
+}
+span.name {
+    display: block;
+    float: left;
+    width: 210px;
+    text-align: right;
+    line-height: 36px;
+}
+.gf-select {
+    float: left;
+    width: 117px;
+    margin-right: 10px;
+    position: relative;
+}
+.gf-select span {
+    width: 80px;
+    padding: 0 27px 0 10px;
+    display: block;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+.gf-select span em {
+    font-style: normal;
+}
+.gf-select .icon-jt {
+    background: url(../img/down-jt.png) center right no-repeat;
+    width: 12px;
+    height: 6px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -3px;
+}
+.gf-select ul {
+    border: 1px solid #ddd;
+    position: absolute;
+    width: 100%;
+    top: 31px;
+    overflow-y: auto;
+    display: none;
+    background: #fff;
+}
+.gf-select ul li {
+    border-bottom: 1px solid #ddd;
+    line-height: 14px;
+    padding-left: 10px;
+    height:14px;
+    width:90px;
+}
+.gf-select ul li:last-child {
+    border-bottom: none;
+}
+.codeTab{
+    position: absolute;
+    right:20px;
+    top: 35%;
+    font-size: 14px;
+    color:#fff;
+    text-align: center;
+}
+.codeTab li{
+    padding-top: 15px;
+    width: 80px;
+    height: 50px;
+    margin-bottom: 10px;
+    line-height: 20px;
+    background: #2c313d;
+}
+.codePic{
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    left: -110px;
+    top: 95px;
+    display: none;
+}
+.codePic1{
+    background:url(/views/img/code1.png) no-repeat center center ;
+}
+.codePic2{
+    background:url(/views/img/code2.png) no-repeat center center ;
+}
+.codePic3{
+    background:url(/views/img/code3.png) no-repeat center center ;
+}
+.codePic4{
+    background:url(/views/img/code4.png) no-repeat center center ;
+}
+/************************************售后跟踪************************************/
+.trackTitle{
+    width: 100%;
+    line-height: 72px;
+    background: #2c313d;
+    font-size:24px;
+    color:#fff;
+    text-align: center;
+}
+.trackTab{
+    padding-left:340px;
+}
+.trackTab{
+    padding-top:15px;
+    border-top:4px solid #a067eb;
+}
+.trackTab li{
+    padding:15px 0;
+    height:38px;
+}
+.trackHead{
+    text-indent: 20px;
+    font-size:18px;
+    color:#a067eb;
+    background:url(/views/img/shgz.png) no-repeat 225px 18px;
+}
+.trackTab span{
+    float:left;
+    line-height: 38px;
+}
+.trackL{
+    width:112px;
+    color:#fff;
+    font-size:16px;
+    text-align: center;
+}
+.trackR{
+    width: 72px;
+    background: #fff;
+    text-align: center;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.trackCurr,.trackHouse{
+    width: 200px;
+    margin-right: 30px;
+    font-size: 16px;
+    text-align: center;
+    background: #fff;
+}
+.track_bg{
+    color:#fff;
+    background: #a067eb;
+}
+.trackFirst{
+    background: #a067eb;
+    color: #fff;
+}
+.trackWrap{
+    position: relative;
+    width: 100%;
+    display: none;
+}
+.trackTabW{
+    width: 100%;
+    height:291px;
+    background: rgba(20,18,19,.92);
+    border-top:4px solid #a067eb;
+    position: absolute;
+    top:72px;
+    display: none;
+    z-index: 1000000;
+}
+.trackMap{
+    width: 100%;
+    height:755px;
+    background: url("/views/img/trackMap.jpg") no-repeat 0 0;
+}
+.trackList{
+    width: 1200px;
+    margin: auto;
+    padding-top: 20px;
+    display: none;
+}
+.trackList table{
+    width: 100%;
+}
+.trackList th{
+    background: #a067eb;
+    font-weight:normal;
+    color:#fff;
+    height:48px;
+    font-size: 16px;
+}
+.trackList td{
+    color:#7a7a7a;
+    height:48px;
+    font-size: 14px;
+    text-align: center;
+}
+.bg{
+    height:72px;
+    background:#2c313d;
+}
+.trackList .trackMore{
+    background: url("/views/img/more1.png") no-repeat center center;
+}
+.trackMoreWrap table{
+    width: 100%;
+}
+.trackMoreWrap th{
+    background: #a067eb;
+    font-weight:normal;
+    color:#fff;
+    height:48px;
+    font-size: 16px;
+}
+.trackMoreWrap td{
+    color:#7a7a7a;
+    height:48px;
+    font-size: 14px;
+    border-bottom:1px solid #e9edf0;
+    text-align: center;
+}
+.trackMore1{
+    background: url("/views/img/more1_h.png") no-repeat center center;
+}
+.layui-layer-content{
+    padding:0!important;
+}
+.trackMoreWrap tbody {
+    display:block;
+    height:254px;
+    overflow-y:scroll;
+}
+.trackMoreWrap thead,.trackMoreWrap tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+.trackMoreWrap thead {
+    width: calc( 100% - 1em );
+}
+.trackMoreWrap thead{
+    width: 1100px;
+}
+.trackDataP{
+    text-indent: 20px;
+    line-height: 36px;
+    background: #8f8f8f;
+    font-size:16px;
+    color:#fff;
+}
+.trackDatatab li{
+    width: 25%;
+    color:#7a7a7a;
+    font-size:14px;
+    line-height: 36px;
+    float: left;
+    text-indent: 20px;
+}
+.trackDatatab{
+    background: #dfe3e6;
+}
+.trackDatatab1 li{
+    width: 25%;
+    color:#7a7a7a;
+    font-size:14px;
+    line-height: 36px;
+    float: left;
+    text-indent: 20px;
+}
+.trackDatatab1{
+    background: #f0f4f7;
 }
