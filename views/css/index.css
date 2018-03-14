@@ -38,14 +38,17 @@
 .back:hover .usreNmae{
     color:#fff;
 }
+.back:hover .quit{
+    opacity: 1;
+}
 .quit{
     position: absolute;
     width: 140px;
     left: 0;
     top:65px;
     background: #2c313d;
-    display: none;
     z-index: 100;
+    opacity: 0;
 }
 .quit li{
     text-indent: 20px;
@@ -462,7 +465,7 @@
     color:#7a7a7a;
 }
 .combinedTab .state {
-    height:80px;
+    height:120px;
     padding-left: 10px;
     line-height: 40px;
 }
@@ -1061,8 +1064,11 @@ span.name {
     border-top:4px solid #a067eb;
     position: absolute;
     top:72px;
-    display: none;
+    opacity: 0;
     z-index: 1000000;
+}
+.trackShow:hover .trackTabW{
+    opacity: 1;
 }
 .trackMap{
     width: 100%;
@@ -1165,4 +1171,13 @@ span.name {
 }
 .trackDatatab1{
     background: #f0f4f7;
+}
+.state .stateHead{
+    padding:0;
+    width: 120px;
+    color:#525252;
+    text-indent: 10px;
+}
+.state .stateColor{
+    color:#09c5eb;
 }
