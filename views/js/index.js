@@ -322,6 +322,32 @@ $('.view').on('click',function(){
     let combinedData = `
     <div class="combinedWrap">
         <ul class="combinedTab">
+                <li class="state">
+                    <p class='clear'>
+                        <span class='stateHead'>出厂配置</span>
+                        <span class='stateColor'>工业水表</span>
+                        <span>物联SN：10811017C64DA4AB</span>
+                        <span>传感信号：双EV</span>
+                        <span>物联电池：正常</span>
+                        <span>强磁：有 </span>
+                        <span>拆卸：有</span>
+                    </p>
+                    <p class='clear'>
+                        <span class='stateHead'> 初始化</span>
+                        <span>设备ID：1215684715794571848</span>
+                        <span>初始脉冲：154614815</span>
+                        <span>倍率(m³)/脉冲常数：0.001/1000</span>
+                        <span>平台物联号：abc4******2547</span>
+                    </p>
+                    <p class='clear'>
+                        <span class='stateHead'> 最新运行信息 </span>
+                        <span>读数：123456789m³ </span>
+                        <span>上送时间：2018-3-3 00:00:00</span>
+                        <span>物联电池：正常</span>
+                        <span>强磁：正常</span>
+                        <span>拆卸：正常</span>
+                    </p>
+                </li>
              <li class="firstTime">首次上送时间：<span>2017-06-01 19:10:47</span></li>
              <li class="searchTime">
                  <span class="kssj">开始时间</span>
@@ -335,9 +361,7 @@ $('.view').on('click',function(){
             <table class="tabList1" border="0" cellspacing="0">
                 <tr>
                     <th>时间</th>
-                    <th>发送频率</th>
-                    <th>发送功率</th>
-                    <th>网络互交</th>
+                    <th>最新读数</th>
                     <th>实发条数</th>
                     <th>应发条数</th>
                     <th>成功率</th>
@@ -345,9 +369,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123456678m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -355,9 +377,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123456678m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -365,9 +385,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123456678m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -375,9 +393,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123456678m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -385,9 +401,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123456678m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -395,9 +409,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123456678m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -405,9 +417,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123456678m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -415,9 +425,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123456678m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -554,7 +562,7 @@ $('.view').on('click',function(){
             var index = layer.open({
                 type: 1
                 ,title: ['通用组合式模组数据信息', 'font-size:18px;background:#2c313d;color:#fff;text-align:center;']
-                ,area:['1100px',"670px"]
+                ,area:['1100px',"800px"]
                 ,content:  combinedData
                 ,success: function(layero, index){
                     laydate.render({
@@ -949,13 +957,6 @@ $('.codeTab li').mouseout(function(){
     }
 })
 //******************************************************************************************售后服务模块
-/*$('.trackTitle').mouseover(function(){
-    $('.trackTabW').slideDown()
-})
-
-$(document).on('click',function(){
-    $('.trackTabW').slideUp()
-})*/
 //售后服务天地图调用
 var map,zoom=5;
 //初始化地图对象
