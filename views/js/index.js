@@ -30,13 +30,13 @@ $('.back').mouseover(function(){
 $('.back').mouseout(function(){
     $('.zhixiang').attr('src','/views/img/zhixia-h.png')
 })
-$('.back').on('click',function(ev){
+/*$('.back').on('click',function(ev){
     $('.quit').show()
     ev.stopPropagation();
 })
 $(document).on('click',function () {
     $('.quit').hide(200)
-})
+})*/
 //点击出现二维码
 $('.codeList1').hide()
 $('.codeList2').on('click',function(ev){
@@ -315,7 +315,7 @@ $('.address').on('click',function(){
         })
     })
 })
-/*更多详情*/
+/*分部管理更多详情*/
 $('.view').on('click',function(){
     var text =$(this).parent().prev().prev().prev().prev().prev().prev().text()
     /*组合式模组主体*/
@@ -438,18 +438,30 @@ $('.view').on('click',function(){
     <div class="combinedWrap">
         <ul class="combinedTab">
             <li class="state">
-                <span>物联SN：10811017C64DA4AB</span>
-                <span>模拟信号：双EV</span>
-                <span>电源状态：正常 </span>
-                <span>强磁：有</span>
-                <span>拆卸：有</span>
-                <span>倒流：空</span>
-                <span>传感器故障：空  </span>
-                <span>阀门状态：空</span>
-                <span>表号：0</span>
-                <span>ID：1215684715794571848</span>
-                <span>脉冲值：154614815</span>
-                <span>倍率（m³）：0.001</span>
+                <p class='clear'>
+                    <span class='stateHead'>出厂配置</span>
+                    <span class='stateColor'>远传物联网端</span>
+                    <span>物联SN：10811017C64DA4AB</span>
+                    <span>传感信号：双EV</span>
+                    <span>物联电池：正常</span>
+                    <span>强磁：有 </span>
+                    <span>拆卸：有</span>
+                </p>
+                <p class='clear'>
+                    <span class='stateHead'> 初始化</span>
+                    <span>设备ID：1215684715794571848</span>
+                    <span>初始脉冲：154614815</span>
+                    <span>倍率(m³)/脉冲常数：0.001/1000</span>
+                    <span>平台物联号：abc4******2547</span>
+                </p>
+                <p class='clear'>
+                    <span class='stateHead'> 最新运行信息 </span>
+                    <span>读数：123456789m³ </span>
+                    <span>上送时间：2018-3-3 00:00:00</span>
+                    <span>物联电池：正常</span>
+                    <span>强磁：正常</span>
+                    <span>拆卸：正常</span>
+                </p>
             </li>
             <li class="firstTime">首次上送时间：<span>2017-06-01 19:10:47</span></li>
             <li class="searchTime">
@@ -464,9 +476,7 @@ $('.view').on('click',function(){
             <table class="tabList1" border="0" cellspacing="0">
                 <tr>
                     <th>时间</th>
-                    <th>发送频率</th>
-                    <th>发送功率</th>
-                    <th>网络互交</th>
+                    <th>最新读数</th>
                     <th>实发条数</th>
                     <th>应发条数</th>
                     <th>成功率</th>
@@ -474,9 +484,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123123465m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -484,9 +492,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123123465m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -494,9 +500,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123123465m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -504,9 +508,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123123465m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -514,9 +516,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123123465m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -524,9 +524,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123123465m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -534,9 +532,7 @@ $('.view').on('click',function(){
                 </tr>
                 <tr>
                     <td>2017-06-01</td>
-                    <td>-----</td>
-                    <td>17dbm</td>
-                    <td>不带网络反馈</td>
+                    <td>123123465m³</td>
                     <td>256</td>
                     <td>256</td>
                     <td>100%</td>
@@ -623,7 +619,7 @@ $('.view').on('click',function(){
             var index = layer.open({
                 type: 1
                 ,title: ['家用一体式模组数据信息', 'font-size:18px;background:#2c313d;color:#fff;text-align:center;']
-                ,area:['1100px',"780px"]
+                ,area:['1100px',"800px"]
                 ,content: combinedData1
                 ,success: function(layero, index){
                     laydate.render({
@@ -786,8 +782,8 @@ layui.use(['laypage', 'layer'], function(){
                                      <table class="factoryTab" border="0" cellspacing="0" >
                                          <tr>
                                                 <td>物联SN:10811017C64DA4AB</td>
-                                                <td>模拟信号：双EV</td>
-                                                <td>电源状态：正常 </td>
+                                                <td>传感信号：双EV</td>
+                                                <td>物联电池：正常 </td>
                                          </tr>
                                          <tr>
                                                 <td>强磁：有</td>
@@ -800,9 +796,9 @@ layui.use(['laypage', 'layer'], function(){
                                                 <td>表号：0 </td>
                                          </tr>
                                          <tr>
-                                                <td>ID：1215684715794571848  </td>
-                                                <td>脉冲值：154614815</td>
-                                                <td>倍率（m³）：0.001</td>
+                                                <td>设备ID：1215684715794571848  </td>
+                                                <td>初始脉冲：154614815</td>
+                                                <td>倍率（m³）/脉冲常数：0.001/1000</td>
                                          </tr>
                                 </table>
                             </div>
@@ -952,27 +948,14 @@ $('.codeTab li').mouseout(function(){
         $('.codePic').eq(indexH).hide();
     }
 })
-//点击通用模组和家用一体式模组
-$('.trackCurr').addClass('track_bg');
-$('.trackCurr').on('click',function(){
-    $(this).addClass('track_bg');
-    $(this).next().removeClass('track_bg');
-    $('.hide').hide()
-    $('.show').show()
-})
-$('.trackHouse').on('click',function(){
-    $(this).addClass('track_bg');
-    $(this).prev().removeClass('track_bg');
-    $('.hide').show()
-    $('.show').hide()
-})
-$('.trackTitle').mouseover(function(){
+//******************************************************************************************售后服务模块
+/*$('.trackTitle').mouseover(function(){
     $('.trackTabW').slideDown()
 })
 
 $(document).on('click',function(){
     $('.trackTabW').slideUp()
-})
+})*/
 //售后服务天地图调用
 var map,zoom=5;
 //初始化地图对象
@@ -1101,7 +1084,7 @@ $('.trackMore').on('click',function(){
                     <li>阀门状态：空</li>
                     <li>表号：0</li>
                     <li>设备ID：1215684715794571848  </li>
-                    <li>脉冲值：154614815</li>
+                    <li>初始脉冲：154614815</li>
                     <li>倍率(m³)/脉冲常数：0.001/1000</li>
                 </ul>
             </div>
@@ -1128,4 +1111,22 @@ $('.trackMore').on('click',function(){
 $('.platformTab li').eq(3).on('click',function(){
     $('.trackWrap').show().siblings().hide();
     $('body,html').animate({scrollTop:scHeight},500);
+})
+//点击年限选择
+$('.trackR').on('click',function(){
+    $(this).addClass('trackFirst').siblings().removeClass('trackFirst')
+})
+//点击通用模组和家用一体式模组
+$('.trackCurr').addClass('track_bg');
+$('.trackCurr').on('click',function(){
+    $(this).addClass('track_bg');
+    $(this).next().removeClass('track_bg');
+    $('.hide').hide()
+    $('.show').show()
+})
+$('.trackHouse').on('click',function(){
+    $(this).addClass('track_bg');
+    $(this).prev().removeClass('track_bg');
+    $('.hide').show()
+    $('.show').hide()
 })
