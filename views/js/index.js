@@ -359,14 +359,17 @@ $('.view').on('click',function(){
         </ul>
         <div class="combinedData">
             <table class="tabList1" border="0" cellspacing="0">
-                <tr>
-                    <th>时间</th>
-                    <th>最新读数</th>
-                    <th>实发条数</th>
-                    <th>应发条数</th>
-                    <th>成功率</th>
-                    <th>操作</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>最新读数</th>
+                        <th>实发条数</th>
+                        <th>应发条数</th>
+                        <th>成功率</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <tr>
                     <td>2017-06-01</td>
                     <td>123456678m³</td>
@@ -434,9 +437,10 @@ $('.view').on('click',function(){
                 <tr class="dataXs" style="display:none">
                     <td colspan="7" style="height:96px;" >暂无数据</td>
                 </tr>
+            </tbody>
             </table>
         </div>
-        <div class="colseBtm">
+        <div class="closeBtm">
              <span class="close">关闭</span>
         </div>
         </div>
@@ -482,14 +486,17 @@ $('.view').on('click',function(){
         </ul>
         <div class="combinedData">
             <table class="tabList1" border="0" cellspacing="0">
-                <tr>
-                    <th>时间</th>
-                    <th>最新读数</th>
-                    <th>实发条数</th>
-                    <th>应发条数</th>
-                    <th>成功率</th>
-                    <th>操作</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>最新读数</th>
+                        <th>实发条数</th>
+                        <th>应发条数</th>
+                        <th>成功率</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <tr>
                     <td>2017-06-01</td>
                     <td>123123465m³</td>
@@ -549,6 +556,7 @@ $('.view').on('click',function(){
                 <tr class="dataXs" style="display:none">
                     <td colspan="7" style="height:96px;" >暂无数据</td>
                 </tr>
+            </tbody>
             </table>
         </div>
         <div class="closeBtm">
@@ -562,7 +570,7 @@ $('.view').on('click',function(){
             var index = layer.open({
                 type: 1
                 ,title: ['通用组合式模组数据信息', 'font-size:18px;background:#2c313d;color:#fff;text-align:center;']
-                ,area:['1100px',"800px"]
+                ,area:['1100px',"670px"]
                 ,content:  combinedData
                 ,success: function(layero, index){
                     laydate.render({
@@ -627,7 +635,7 @@ $('.view').on('click',function(){
             var index = layer.open({
                 type: 1
                 ,title: ['家用一体式模组数据信息', 'font-size:18px;background:#2c313d;color:#fff;text-align:center;']
-                ,area:['1100px',"800px"]
+                ,area:['1100px',"670px"]
                 ,content: combinedData1
                 ,success: function(layero, index){
                     laydate.render({
@@ -956,7 +964,7 @@ $('.codeTab li').mouseout(function(){
         $('.codePic').eq(indexH).hide();
     }
 })
-//******************************************************************************************售后服务模块
+//******************************************************************************************售后服务模块*************************************************************
 //售后服务天地图调用
 var map,zoom=5;
 //初始化地图对象
@@ -996,7 +1004,8 @@ markerClusterer1 = new TMarkerClusterer(map, config1);
 for(var i=0;i<markers.length;i++){
     markerclick1 = TEvent.addListener(markers[i],"click",function(p){
         $('.trackList').show();
-        $('body,html').animate({scrollTop:scHeight},1000);
+        var h = $(document).height()-$(window).height();
+        $(document).scrollTop(h);
     });
 }
 //点击售后跟踪的详情
