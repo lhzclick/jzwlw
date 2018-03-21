@@ -829,17 +829,63 @@
     width: 1200px;
     height: 926px;
     margin: auto;
-    position: relative;
-    top:-2px;
     background:url(/views/img/wlwdmk.jpg) no-repeat center center ;
 }
 .wlwwxtymk{
     background-image: url(/views/img/wlwwxtymk.jpg);
     display: none;
 }
-.zdyzxmk{
+.zdyzxmk,.wlwdmk{
     background-image: url(/views/img/zdyzxmk.jpg);
     display: none;
+}
+.wlwdmk{
+    display: block;
+}
+.replace{
+    width: 282px;
+    height: 420px;
+    position: absolute;
+    top: 146px;
+    left: 296px;
+}
+.replace1{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 362px;
+    left: 605px;
+}
+.replace1 p{
+    font-size: 18px;
+    text-align: center;
+    color:#7a7a7a;
+    line-height: 24px;
+    margin: 10px 0;
+}
+.replaceTab{
+    padding-top:10px;
+}
+.replaceBtn{
+    display: inline-block;
+    margin-left: 90px;
+    margin-top: 15px;
+    width: 88px;
+    height:36px;
+    line-height: 36px;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    text-align: center;
+}
+.replaceBtn:hover{
+    background:#128be8 ;
+    color:#fff;
+    padding:1px;
+    border:0;
+}
+.blockmk{
+    margin-bottom: 30px;
+    position: relative;
 }
 .swwlwydd{
     background-image: url(/views/img/swwlwydd.jpg);
@@ -1203,4 +1249,87 @@ span.name {
 }
 .trackList{
     margin-bottom: 30px;
+}
+/*****************************************************图片更换***************************/
+#preview,#preview1{
+    width:260px;
+    height:175px;
+    overflow:hidden;
+    margin-left: 12px;
+}
+#imghead,#imghead1 {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);}
+.file1{
+    margin-left: 50px;
+    margin-bottom: 5px;
+}
+/*************************文件下载************************/
+.downloadTab{
+    width: 165px;
+    position: absolute;
+    top: 112px;
+    left: 800px;
+}
+.downloadTab1,.downloadTab2{
+    width: 140px;
+    position: absolute;
+    top: 217px;
+    left: 800px;
+}
+.explainTab{
+    width: 165px;
+    position: absolute;
+    top: 420px;
+    left: 995px;
+}
+.explainTab1,.explainTab2{
+    width: 165px;
+    position: absolute;
+    top: 374px;
+    left: 995px;
+}
+.downloadTab li,.explainTab li,.downloadTab1 li,.explainTab1 li,.downloadTab2 li,.explainTab2 li{
+    height: 60px;
+    background: #128be8;
+    color:#fff;
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 60px;
+    text-indent: 10px;
+}
+.explainTab1 .list{
+    height: 70px;
+    margin: 10px 0;
+    line-height: 30px;
+}
+.downloadTab span,.explainTab span,.downloadTab1 span,.explainTab1 span,.downloadTab2 span,.explainTab2 span{
+    float: right;
+    width: 40px;
+    height: 60px;
+    background: url("/views/img/download1.png") no-repeat center center;
+}
+.explainTab1 .list span{
+    height: 70px;
+    position: relative;
+    top:-30px;
+}
+.downloadTab span:hover{
+    background-image: url("/views/img/download_h.png")
+}
+.explainTab span:hover{
+    background-image: url("/views/img/download_h.png")
+}
+.downloadTab1 span:hover{
+    background-image: url("/views/img/download_h.png")
+}
+.explainTab1 span:hover{
+    background-image: url("/views/img/download_h.png")
+}
+.downloadTab2 span:hover{
+    background-image: url("/views/img/download_h.png")
+}
+.explainTab2 span:hover{
+    background-image: url("/views/img/download_h.png")
+}
+.file2{
+    margin-left: 20px;
 }
