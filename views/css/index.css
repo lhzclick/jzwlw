@@ -461,11 +461,11 @@
 /*家用一体式弹框*/
 .state span{
     float:left;
-    padding:0 10px;
+    padding:0 5px;
     color:#7a7a7a;
 }
 .combinedTab .state {
-    height:120px;
+    height:160px;
     padding-left: 10px;
     line-height: 40px;
 }
@@ -1297,7 +1297,7 @@ span.name {
     text-indent: 10px;
 }
 .explainTab1 .list{
-    height: 70px;
+    height: 60px;
     margin: 10px 0;
     line-height: 30px;
 }
@@ -1332,4 +1332,18 @@ span.name {
 }
 .file2{
     margin-left: 20px;
+}
+.fileInp{
+    font-size:14px;
+    position: relative;
+    top:-13px;
+}
+.fileInp1{
+    font-size:14px;
+    position: relative;
+    top:0px;
+}
+.state .prompt {
+   margin-left: 113px;
+    color:#db3b3e;
 }
