@@ -338,3 +338,9 @@
 .slideBox .hd li.on{ background:#5ca3e6;  }
 .slideBox .bd{ position:relative; z-index:0; }
 .slideBox .bd li{ position:relative; text-align:center;  }
+@media screen and (max-width: 980px){
+    .loginwrap{
+        width: 620px;
+        height: 720px;
+    }
+}
