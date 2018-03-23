@@ -326,26 +326,32 @@ $('.view').on('click',function(){
                     <p class='clear'>
                         <span class='stateHead'>出厂配置</span>
                         <span class='stateColor'>工业水表</span>
-                        <span>物联SN：10811017C64DA4AB</span>
-                        <span>传感信号：双EV</span>
-                        <span>物联电池：正常</span>
-                        <span>强磁：有 </span>
-                        <span>拆卸：有</span>
+                        <span>物联SN: 10811017C64DA4AB</span>
+                        <span>传感信号: 双EV</span>
+                        <span>物联电池: 正常</span>
+                        <span>强磁: 有</span>
+                        <span>拆卸: 有</span>
                     </p>
                     <p class='clear'>
                         <span class='stateHead'> 初始化</span>
-                        <span>设备ID：1215684715794571848</span>
-                        <span>初始脉冲：154614815</span>
-                        <span>倍率(m³)/脉冲常数：0.001/1000</span>
-                        <span>平台物联号：abc4******2547</span>
+                        <span>设备ID: 1215684715794571848</span>
+                        <span>初始脉冲: 154614815</span>
+                        <span>倍率(m³)/脉冲常数: 0.001/1000</span>
+                        <span>平台物联号: abc4******2547</span>
                     </p>
                     <p class='clear'>
                         <span class='stateHead'> 最新运行信息 </span>
-                        <span>读数：123456789m³ </span>
-                        <span>上送时间：2018-3-3 00:00:00</span>
-                        <span>物联电池：正常</span>
-                        <span>强磁：正常</span>
-                        <span>拆卸：正常</span>
+                        <span>读数:123456789m³</span>
+                        <span>上送时间:2018-3-3 00:00:00</span>
+                        <span>物联电池:正常</span>
+                        <span>强磁:正常</span>
+                        <span>拆卸:正常</span>
+                        <span>信号强度(RSSI):-85.00</span>
+                        <span>扩频:SF11</span>
+                        <span>信噪比(SNR)4.0</span>
+                    </p>
+                    <p class='clear'>
+                        <span class='prompt'> （注：RSSI>-90、SNR>0为合格，数据上下波动5%均为正常） </span>
                     </p>
                 </li>
              <li class="firstTime">首次上送时间：<span>2017-06-01 19:10:47</span></li>
@@ -473,6 +479,12 @@ $('.view').on('click',function(){
                     <span>物联电池：正常</span>
                     <span>强磁：正常</span>
                     <span>拆卸：正常</span>
+                    <span>信号强度(RSSI):-85.00</span>
+                    <span>扩频:SF11</span>
+                    <span>信噪比(SNR)4.0</span>
+                </p>
+                <p class='clear'>
+                    <span class='prompt'> （注：RSSI>-90、SNR>0为合格，数据上下波动5%均为正常） </span>
                 </p>
             </li>
             <li class="firstTime">首次上送时间：<span>2017-06-01 19:10:47</span></li>
@@ -570,7 +582,7 @@ $('.view').on('click',function(){
             var index = layer.open({
                 type: 1
                 ,title: ['通用组合式模组数据信息', 'font-size:18px;background:#2c313d;color:#fff;text-align:center;']
-                ,area:['1100px',"670px"]
+                ,area:['1100px',"710px"]
                 ,content:  combinedData
                 ,success: function(layero, index){
                     laydate.render({
@@ -635,7 +647,7 @@ $('.view').on('click',function(){
             var index = layer.open({
                 type: 1
                 ,title: ['家用一体式模组数据信息', 'font-size:18px;background:#2c313d;color:#fff;text-align:center;']
-                ,area:['1100px',"670px"]
+                ,area:['1100px',"710px"]
                 ,content: combinedData1
                 ,success: function(layero, index){
                     laydate.render({
