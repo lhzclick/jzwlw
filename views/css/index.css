@@ -797,14 +797,14 @@
     background: #141213;
     padding-bottom:52px;
 }
+.productAuto{
+    width: 1200px;
+    margin: auto;
+}
 .productWater p{
     line-height: 96px;
     font-size:24px;
-    text-align: center;
-}
-.productTab{
-    width: 840px;
-    margin: auto;
+    text-indent: 210px;
 }
 .productTab li{
     width: 260px;
@@ -824,10 +824,12 @@
 }
 .productTab li:nth-of-type(3){
     background:#2c313d url(/views/img/polygon.png) no-repeat center 80px;
+    float: right;
+    margin:0;
 }
 .wlwdmk,.wlwwxtymk,.zdyzxmk,.swwlwydd{
     width: 1200px;
-    height: 926px;
+    height: 918px;
     margin: auto;
     background:url(/views/img/wlwdmk.jpg) no-repeat center center ;
 }
@@ -835,7 +837,7 @@
     background-image: url(/views/img/wlwwxtymk.jpg);
     display: none;
 }
-.zdyzxmk,.wlwdmk{
+.zdyzxmk{
     background-image: url(/views/img/zdyzxmk.jpg);
     display: none;
 }
@@ -900,7 +902,7 @@
 .productTab1{
     width: 480px;
     height: 100px;
-    margin:auto;
+    margin-left:185px;
     padding-top:20px;
     display: none;
 }
