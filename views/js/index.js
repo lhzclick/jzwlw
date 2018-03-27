@@ -197,7 +197,7 @@ $('.distribution').on('click',function(){
 
 
     var markers = [];
-    var icon = new TIcon("/views/img/tagging.png",new TSize(20,25),{anchor:new TPixel(20,20)});
+    var icon = new TIcon("/views/img/tagging.png",new TSize(28,28),{anchor:new TPixel(20,20)});
 //				new TMarker(new TLngLat(v.longitude, v.latitude), {icon: icon});
     for(var i = 0; i < data_info.length; i++) {
         var lnglat = new TLngLat(data_info[i][0],data_info[i][1]);
@@ -875,6 +875,8 @@ $('.productTab li').on('click',function(){
 //点击第三方自定义总线系统
 $('.productTab li').eq(1).on('click',function(event){
     $('.productTab1').slideDown();
+    $('.productTab1 li').eq(0).css('background-color','#128be8');
+    $('.zdyzxmk ').show().siblings().hide();
     event.stopPropagation();
 })
 $('.productTab1').on('click',function(event){
@@ -1005,7 +1007,7 @@ var data_info1 = [
 ];
 var markerClusterer1,markerclick1,marker1;
 var markers = [];
-var icon1 = new TIcon("/views/img/tagging.png",new TSize(20,25),{anchor:new TPixel(20,20)});
+var icon1 = new TIcon("/views/img/tagging.png",new TSize(28,28),{anchor:new TPixel(20,20)});
 //				new TMarker(new TLngLat(v.longitude, v.latitude), {icon: icon});
 for(var i = 0; i < data_info1.length; i++) {
     var lnglat1 = new TLngLat(data_info1[i][0],data_info1[i][1]);
