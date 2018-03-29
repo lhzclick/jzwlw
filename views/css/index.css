@@ -439,11 +439,12 @@
     background: url(/views/img/datePic.png) no-repeat 288px center,url(/views/img/datePic.png) no-repeat 600px center;
 }
 .combinedData{
-    height: 315px;
+    height: 270px;
     overflow: auto;
 }
 .tabList1{
     width: 100%;
+    height:270px;
 }
 .tabList1 th{
     height: 48px;
@@ -465,7 +466,7 @@
     color:#7a7a7a;
 }
 .combinedTab .state {
-    height:160px;
+    height:200px;
     padding-left: 10px;
     line-height: 40px;
 }
@@ -1111,7 +1112,7 @@ span.name {
     background: rgba(20,18,19,.92);
     border-top:4px solid #a067eb;
     position: absolute;
-    top:72px;
+    top:320px;
     opacity: 0;
     transition: .5s;
 }
@@ -1232,7 +1233,7 @@ span.name {
 }
 .tabList1 tbody {
     display:block;
-    height:254px;
+    height:222px;
     overflow-y:scroll;
 }
 .tabList1 thead,.tabList1 tbody tr {
@@ -1348,4 +1349,14 @@ span.name {
 .state .prompt {
    margin-left: 113px;
     color:#db3b3e;
+}
+em{
+    font-style: normal;
+    color:#09c5eb;
+    margin-right: 10px;
+}
+.distributionTk{
+    font-size:16px;
+    text-indent: 10px;
+
 }
