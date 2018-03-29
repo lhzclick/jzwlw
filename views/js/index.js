@@ -48,14 +48,7 @@ $(document).on('click',function () {
 })
 
 // 点击返回顶部
-//        var screenw = document.documentElement.clientWidth || document.body.clientWidth;
-//        var screenh = document.documentElement.clientHeight || document.body.clientHeight;
-//        $('.backR').css('left',screenw - $('.backR').offsetWidth +"px")
-//        $('.backR').css('top',screenw - $('.backR').offsetHeight +"px")
-//        window.onscroll = function(){
-//            var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
-//            $('.backR').css('top',screenw - $('.backR').offsetHeight+scrolltop+"px")
-//        }
+
     $('.backR').on('click',function(){
          $('body,html').animate({scrollTop:0},500);
     })
@@ -99,80 +92,10 @@ $(document).on('scroll',function(){
 })
 
 //点击分布管理
-//初始化地图
-/*var map,lineTool,polygonTool,handler;
-map = new T.Map('mapDiv', {
-    attributionControl: false,
-    inertia: false
-});*/
 $('.distribution').on('click',function(){
     $('body,html').animate({scrollTop:scHeight},500);
     $('.scatterWrap').show().siblings().hide();
     $('.backTop').show();
-    /*/!*天地图调用*!/
-    var zoom = 5;
-    var data_info = [[106.840785, 28.212108,"桐梓县模组1"],
-        [106.841911, 28.214462,"桐梓县模组2"],
-        [106.841094, 28.213157,"桐梓县模组3"],
-        [106.840927, 28.213243,"桐梓县模组4"],
-        [114.370927, 30.608954,"武汉模组1"],
-        [114.480927, 30.088954,"武汉模组2"],
-        [116.810927, 40.688954,"北京模组1"],
-        [117.000927, 40.568954,"北京模组2"],
-    ];
-
-    map.centerAndZoom(new T.LngLat(106.840785, 28.212108), zoom);
-    var config = {
-        showLabel: true
-
-    };
-    var arrayObj = new Array();
-    for (var i = 0; i < data_info.length; i++) {
-        var marker = new T.Marker(new T.LngLat(data_info[i][0],data_info[i][1]));  // 创建标注
-        var content = data_info[i][2];
-        arrayObj.push(marker);
-        addClickHandler(content,marker);
-    }
-    function addClickHandler(content,marker){
-        marker.addEventListener("click",function(e){
-                openInfo(content,e)}
-        );
-    }
-    function openInfo(content,e){
-        var point = e.lnglat;
-        marker = new T.Marker(point);// 创建标注
-        var markerInfoWin = new T.InfoWindow(content,{offset:new T.Point(0,-30)}); // 创建信息窗口对象
-        map.openInfoWindow(markerInfoWin,point); //开启信息窗口
-    }
-
-    var markers = new T.MarkerClusterer(map, {markers: arrayObj});
-    markers.setGridSize(20);
-    markers.setMaxZoom(16);
-    //创建标注工具对象
-    lineTool = new T.PolylineTool(map, config);
-    polygonTool = new T.PolygonTool(map, config);
-    //配置画笔
-    handler = new T.PaintBrushTool(map, {
-        keepdrawing: true,
-        style: {
-            weight: 3,
-            color:'red',
-            opacity:.8
-        }
-    });
-    /!*天地图调用结束*!/
-    $('.Line').on('click',function (){
-            lineTool.open();
-    });
-    $('.Planimetry').on('click',function (){
-            polygonTool.open();
-    });
-    $('.Brush').on('click',function (){
-           handler.open();
-    });
-    $('.Trash').on('click',function (){
-        handler.clear();
-    });*/
     //模拟数据
     var data_info = [
         [106.840785, 28.212108,"桐梓县模组1"],
@@ -323,6 +246,7 @@ $('.view').on('click',function(){
     <div class="combinedWrap">
         <ul class="combinedTab">
                 <li class="state">
+                    <p class=' distributionTk'>客户名称：<em>大事故投放</em> 娄山云客户编码：<em>sjdhkshdkjshdkshkskhdkjs</em></p>
                     <p class='clear'>
                         <span class='stateHead'>出厂配置</span>
                         <span class='stateColor'>工业水表</span>
@@ -456,6 +380,7 @@ $('.view').on('click',function(){
     <div class="combinedWrap">
         <ul class="combinedTab">
             <li class="state">
+                <p class='distributionTk'>客户名称：<em>大事故投放</em> 娄山云客户编码：<em>sjdhkshdkjshdkshkskhdkjs</em></p>
                 <p class='clear'>
                     <span class='stateHead'>出厂配置</span>
                     <span class='stateColor'>远传物联网端</span>
@@ -1280,3 +1205,18 @@ function previewImage2(file)
         div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
     }
 }
+$(document).ready(function() {
+    $.ajax({
+        url: '/factoryData',
+        dataType: "jsonp",
+        data: '{"data": "TEST"}',
+        type: 'POST',
+        jsonpCallback: 'callback',
+        success: function (data) {
+            console.log(data)
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+        },
+    });
+});
